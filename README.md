@@ -2,7 +2,7 @@
 
 https://github.com/user-attachments/assets/e0d3f51d-e8ca-4f71-b9f4-cdcd587f82e5
 
-### I designed this Frontend around core ideas:
+### Frontend is designed around core ideas:
 - **On-the-Spot Text Editing:** You should have fast, precise control over editing and altering text.
 - **Dependency-Free:** No downloads, no Python, no Node.js - just a single compact (300~ kb) HTML file that runs in your browser.
 - **Focused on Core:** Only essential tools and features that serve the main concept.
