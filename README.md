@@ -43,7 +43,7 @@ Supports thinking models that use <think></think> tags or if your endpoint retur
 
 ### allOrigins
 
-- Web Search works via allOirgins - https://github.com/gnuns/allOrigins/tree/main
+- Web Search works via allOrigins - https://github.com/gnuns/allOrigins/tree/main
 - By default it will use allorigins.win website as a proxy.
 - But by running it locally you will get way faster and more stable results (use LOC version).
 
