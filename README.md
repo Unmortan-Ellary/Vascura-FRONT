@@ -1,5 +1,3 @@
 # Vascura-FRONT
 
-<video src="Vascura FRONT - Intro.mp4" width="600" controls autoplay loop muted>
-  Your browser does not support the video tag.
-</video>
+<video src="Vascura%20FRONT%20-%20Intro.mp4" controls autoplay muted width="100%"></video>
