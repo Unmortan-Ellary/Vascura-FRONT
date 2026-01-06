@@ -41,6 +41,9 @@ By default, the frontend is configured for an easy start with LM Studio: just tu
 17. **Thinking Models Support:**
 Supports thinking models that use `<think></think>` tags or if your endpoint returns only the final answer (without a thinking step), enable the "Thinking Model" switch to activate compatibility mode - this ensures Web Search and other features work correctly.
 
+18. **Lorebook:**
+Use Lorebook System to create context entries and dynamically inject them into System Prompt as internal LLM memory. Injection triggering based on founded custom tags in last number of messages.
+
 ### allOrigins
 
 - Web Search works via allOrigins - https://github.com/gnuns/allOrigins/tree/main
