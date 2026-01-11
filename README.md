@@ -44,7 +44,7 @@ Supports thinking models that use `<think></think>` tags or if your endpoint ret
 18. **Lorebook:**
 Use the Lorebook System to create text entries and dynamically inject them into the System Prompt as internal LLM memory. Injection is triggered by custom tags detected in the last messages.
 
-19. **LLM Initiative**
+19. **LLM Initiative:**
 Interesting timer based system that force LLM to take Initiative and start new conversations to engage with the user (even with empty chats), messaging multiple times in a row and trying to engage with user on its own, continue to perform given task, acting as different characters each new message (if instructed). Will use Lorebook injections, can use Web Search to find fresh information about last topic of conversation.
 
 ### allOrigins
