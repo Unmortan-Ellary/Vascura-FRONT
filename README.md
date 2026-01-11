@@ -4,7 +4,7 @@ https://github.com/user-attachments/assets/e0d3f51d-e8ca-4f71-b9f4-cdcd587f82e5
 
 ### Frontend is designed around core ideas:
 - **On-the-Spot Text Editing:** You should have fast, precise control over editing and altering text.
-- **Dependency-Free:** No downloads, no Python, no Node.js - just a single compact (300~ kb) HTML file that runs in your browser.
+- **Dependency-Free:** No downloads, no Python, no Node.js - just a single compact (400~ kb) HTML file that runs in your browser.
 - **Focused on Core:** Only essential tools and features that serve the main concept.
 - **Context-Effective Web Search:** Should find info and links and fit in 4096 tokens limit.
 - **OpenAI-compatible API:** The most widely supported standard, chat-completion format.
@@ -43,6 +43,9 @@ Supports thinking models that use `<think></think>` tags or if your endpoint ret
 
 18. **Lorebook:**
 Use the Lorebook System to create text entries and dynamically inject them into the System Prompt as internal LLM memory. Injection is triggered by custom tags detected in the last messages.
+
+19. **LLM Initiative**
+Interesting timer based system that force LLM to take Initiative and start new conversations to engage with the user (even with empty chats), messaging multiple times in a row and trying to engage with user on its own, continue to perform given task, acting as different characters each new message (if instructed). Will use Lorebook injections, can use Web Search to find fresh information about last topic of conversation.
 
 ### allOrigins
 
