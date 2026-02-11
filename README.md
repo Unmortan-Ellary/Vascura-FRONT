@@ -53,7 +53,7 @@ Use the Lorebook System to create text entries and dynamically inject them into 
 Timer based system that force LLM to take Initiative and start new conversations to engage with the user (even with empty chats), messaging multiple times in a row trying to engage with AFK user on its own, continue to perform given task, acting as different characters each new message (if instructed). Will use Lorebook injections, can use Web Search to find fresh information about last topic of conversation.
 
 12. **Random D20 Generator:**
-A TOOL option that adds D20 roll to the system prompt as `"SYS.DICE=1-20"`, LLM will try to hide this number from USER. This option can be used to guide specific instructions based on the SYS.DICE number or range (ex: `SYS.DICE=1-10` LLM will response about failure, `SYS.DICE=11-20` LLM will response about success).
+Option that adds D20 roll to the system prompt as `"SYS.DICE=1-20"`, LLM will try to hide this number from USER. This option can be used to guide specific instructions based on the SYS.DICE number or range (ex: `SYS.DICE=1-10` LLM will response about failure, `SYS.DICE=11-20` LLM will response about success).
 
 ### Useful Links to OpenAI API Compatible Endpoints:
 - `https://generativelanguage.googleapis.com/v1beta/openai/v1` (Google API).
