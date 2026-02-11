@@ -10,6 +10,11 @@ https://github.com/user-attachments/assets/e0d3f51d-e8ca-4f71-b9f4-cdcd587f82e5
 - **OpenAI-compatible API:** The most widely supported standard, chat-completion format.
 - **Open Source:** under the Apache 2.0 License.
 
+### What's new?
+- Random D20 Generator Option.
+- LLM Initiative System.
+- Lorebook System.
+
 ### Features: 
 
 Please watch the video for a visual demonstration of the implemented features.
@@ -46,6 +51,9 @@ Use the Lorebook System to create text entries and dynamically inject them into 
 
 19. **LLM Initiative:**
 Timer based system that force LLM to take Initiative and start new conversations to engage with the user (even with empty chats), messaging multiple times in a row trying to engage with AFK user on its own, continue to perform given task, acting as different characters each new message (if instructed). Will use Lorebook injections, can use Web Search to find fresh information about last topic of conversation.
+
+20. **Random D20 Generator:**
+Option that adds D20 roll to the system prompt as "SYS.DICE=1-20", LLM will try to hide this number from USER. This option can be used to guide specific instructions based on the SYS.DICE number or range (ex: SYS.DICE=1-10 LLM will response about failure, SYS.DICE=11-20 LLM will response about success).
 
 ### allOrigins
 
