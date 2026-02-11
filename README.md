@@ -22,37 +22,37 @@ Please watch the video for a visual demonstration of the implemented features.
 1. **On-the-Spot Text Editing:**
 Edit text just like in a plain notepad, no restrictions, no intermediate steps. Just click and type.
 
-3. **React (Reactivation) System:**
+2. **React (Reactivation) System:**
 Generate as many LLM responses as you like at any point in the conversation. Edit, compare, delete or temporarily exclude an answer by clicking “Ignore”.
 
-5. **Agents for Web Search:**
+3. **Agents for Web Search:**
 Each agent gathers relevant data ([using allOrigins](https://github.com/gnuns/allOrigins/tree/main)) and adapts its search based on the latest messages. Agents will push findings as "internal knowledge", allowing the LLM to use or ignore the information, whichever leads to a better response. The algorithm is based on more complex system but is streamlined for speed and efficiency, fitting within an 4K context window (all 9 agents, instruction model).
 
-7. **Tokens-Prediction System:**
+4. **Tokens-Prediction System:**
 Available when using LM Studio or Llama.cpp Server as the backend, this feature provides short suggestions for the LLM’s next response or for continuing your current text edit. Accept any suggestion instantly by pressing Tab.
 
-9. **Any OpenAI-API-Compatible Backend:**
+5. **Any OpenAI-API-Compatible Backend:**
 Works with any endpoint that implements the OpenAI API - LM Studio, Kobold.CPP, Llama.CPP Server, Oobabooga's Text Generation WebUI, and more. With "Strict API" mode enabled, it also supports Mistral API, OpenRouter API, and other v1-compliant endpoints.
 
-11. **Markdown Color Coding:**
+6. **Markdown Color Coding:**
 Uses Markdown syntax to apply color patterns to your text.
 
-13. **Adaptive Interface:**
+7. **Adaptive Interface:**
 Each chat is an independent workspace. Everything you move or change is saved instantly. When you reload the backend or switch chats, you’ll return to the exact same setup you left, except for the chat scroll position. Supports custom avatars for your chats.
 
-15. **Pre-Configured for LM Studio:**
+8. **Pre-Configured for LM Studio:**
 By default, the frontend is configured for an easy start with LM Studio: just turn "Enable CORS" to ON, in LM Studio server settings, enable the server in LM Studio, choose your model, launch Vascura FRONT, and say “Hi!” - that’s it!
 
-17. **Thinking Models Support:**
+9. **Thinking Models Support:**
 Supports thinking models that use `<think></think>` tags or if your endpoint returns only the final answer (without a thinking step), enable the "Thinking Model" switch to activate compatibility mode - this ensures Web Search and other features work correctly.
 
-18. **Lorebook:**
+10. **Lorebook:**
 Use the Lorebook System to create text entries and dynamically inject them into the System Prompt as internal LLM memory. Injection is triggered by custom tags detected in the last messages.
 
-19. **LLM Initiative:**
+11. **LLM Initiative:**
 Timer based system that force LLM to take Initiative and start new conversations to engage with the user (even with empty chats), messaging multiple times in a row trying to engage with AFK user on its own, continue to perform given task, acting as different characters each new message (if instructed). Will use Lorebook injections, can use Web Search to find fresh information about last topic of conversation.
 
-20. **Random D20 Generator:**
+12. **Random D20 Generator:**
 Option that adds D20 roll to the system prompt as "SYS.DICE=1-20", LLM will try to hide this number from USER. This option can be used to guide specific instructions based on the SYS.DICE number or range (ex: SYS.DICE=1-10 LLM will response about failure, SYS.DICE=11-20 LLM will response about success).
 
 ### allOrigins
