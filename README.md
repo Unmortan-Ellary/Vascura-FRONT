@@ -55,6 +55,11 @@ Timer based system that force LLM to take Initiative and start new conversations
 12. **Random D20 Generator:**
 A TOOL option that adds D20 roll to the system prompt as `"SYS.DICE=1-20"`, LLM will try to hide this number from USER. This option can be used to guide specific instructions based on the SYS.DICE number or range (ex: `SYS.DICE=1-10` LLM will response about failure, `SYS.DICE=11-20` LLM will response about success).
 
+### Useful Links to OpenAI API Compatible Endpoints:
+- `https://generativelanguage.googleapis.com/v1beta/openai/v1` (Google API).
+- `https://openrouter.ai/api/v1` (OpenRouter API).
+- `https://api.mistral.ai/v1` (Mistral API).
+
 ### allOrigins
 
 - Web Search works via allOrigins - https://github.com/gnuns/allOrigins/tree/main
