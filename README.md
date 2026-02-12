@@ -58,14 +58,14 @@ Inspired by SillyTavern's macro system, this engine allows macros / functions ex
 ### Macro Engine Guide (WIP):
 1. **How it works:** Right now Macro Engine parse only the final System Prompt (System Prompt + Lorebook Entries + Web Search). So please use this MACRO keys in Lorebook and System Prompt, they will not work anywhere else. Engine will search for MACRO keys like `{{time}}` execute its function and replace it with the result data `14:30`. A temporal processed System Prompt will be created and pushed to LLM, not affecting the permanent System Prompt or Lorebook, so everything will be recalculated every time message is sent to LLM. Keys are not-case sensitive and can be used as `{{time}}`, `{{TIME}}`, `{{Time}}` etc.
 2. **MACRO Keys:** 
-- {{time}} -> "14:30" - Current Time.
-- {{date}} -> "2023-10-27" - Current Date.
-- {{weekday}} -> "Friday" - Current Day of the Week.
-- {{language}} -> "en-US" - System Language.
-- {{roll 2d6}} -> "8" - Random Dice Generator (Any Kind).
-- {{pick A|B|C}} -> "B" - Random Choice out of 2+ Options.
-- {{lore Red Dragon}} -> "Red dragons are ancient..." - Injects Lore by Entry Name.
-- {{math 10 + 5}} -> "15" - Math functions +, -, *, /, () supports Macro nesting.
+-- {{time}} -> "14:30" - Current Time.
+-- {{date}} -> "2023-10-27" - Current Date.
+-- {{weekday}} -> "Friday" - Current Day of the Week.
+-- {{language}} -> "en-US" - System Language.
+-- {{roll 2d6}} -> "8" - Random Dice Generator (Any Kind).
+-- {{pick A|B|C}} -> "B" - Random Choice out of 2+ Options.
+-- {{lore Red Dragon}} -> "Red dragons are ancient..." - Injects Lore by Entry Name.
+-- {{math 10 + 5}} -> "15" - Math functions +, -, *, /, () supports Macro nesting.
 
 ### Useful Links to OpenAI API Compatible Endpoints:
 - `https://generativelanguage.googleapis.com/v1beta/openai/v1` (Google API).
