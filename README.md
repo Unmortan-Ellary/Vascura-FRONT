@@ -5,7 +5,7 @@ https://github.com/user-attachments/assets/e0d3f51d-e8ca-4f71-b9f4-cdcd587f82e5
 ### Frontend is designed around core ideas:
 - **On-the-Spot Text Editing:** Fast and precise control over editing and altering text.
 - **Dependency-Free:** No downloads, no Python, no Node.js - just a single compact (400~ kb) HTML file that runs in your browser.
-- **Focused on Core:** Only essential tools and features that serve the main concept.
+- **Focused:** Only essential tools and features that serve the main concept.
 - **Context-Effective Web Search:** Should find info and links and fit in 4096 tokens limit.
 - **OpenAI-compatible API:** The most widely supported standard, chat-completion format.
 - **Open Source:** under the Apache 2.0 License.
@@ -53,9 +53,11 @@ Use the Lorebook System to create text entries and dynamically inject them into 
 Timer based system that force LLM to take Initiative and start new conversations to engage with the user (even with empty chats), messaging multiple times in a row trying to engage with AFK user on its own, continue to perform given task, acting as different characters each new message (if instructed). Will use Lorebook injections, can use Web Search to find fresh information about last topic of conversation.
 
 12. **Macro Engine:**
-Inspired by SillyTavern's macro system, this engine allows special macros / functions execution by parsing System Prompt + Lorebook Entries. Example: `Current Date is {{date}}, Time is {{time}}, Today is {{weekday}}, User Language is {{language}}, User will drink {{pick Tea|Milk|Coffee}}, User's happy number for today is {{roll 1d100}}, Favorite songs: {{lore My Favorite Songs List}}, Random Math: {{math {{roll 1d20}} + (5 + 2)}}.` for LLM this text in System Prompt will be converted to `Current Date is 2023-10-27, Time is 12:30, Today is Friday, User Language is en-US, User will drink Milk, User's happy number for today is 78, Favorite songs: My Top 10..., Random Math: 25.` Please read the Macro Engine Guide for more info about each macro.
+Inspired by SillyTavern's macro system, this engine allows macros / functions execution by parsing System Prompt + Lorebook Entries. Example: `Current Date is {{date}}, Time is {{time}}, Today is {{weekday}}, User Language is {{language}}, User will drink {{pick Tea|Milk|Coffee}}, User's happy number for today is {{roll 1d100}}, Favorite songs: {{lore My Favorite Songs List}}, Random Math: {{math {{roll 1d20}} + (5 + 2)}}.` for LLM this text in System Prompt will be converted to `Current Date is 2023-10-27, Time is 12:30, Today is Friday, User Language is en-US, User will drink Milk, User's happy number for today is 78, Favorite songs: My Top 10..., Random Math: 25.` Please read the Macro Engine Guide for more info about each macro.
 
 ### Macro Engine Guide (WIP):
+1. **How it works:** Right now Macro Engine parse only the final System Prompt (System Prompt + Lorebook Entries + Web Search). So please use this MACRO keys in Lorebook and System Prompt, they will not work anywhere else. Engine will search for MACRO keys like `{{time}}` execute its function and replace it with the result data `14:30`. A temporal processed System Prompt will be created and pushed to LLM, not affecting the permanent System Prompt or Lorebook, so everything will be recalculated every time message is sent to LLM. Keys are not-case sensitive and can be used as `{{time}}`, `{{TIME}}`, `{{Time}}` etc.
+2. **MACRO Keys:** 
 - {{time}} -> "14:30" - Current Time.
 - {{date}} -> "2023-10-27" - Current Date.
 - {{weekday}} -> "Friday" - Current Day of the Week.
