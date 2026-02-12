@@ -11,7 +11,7 @@ https://github.com/user-attachments/assets/e0d3f51d-e8ca-4f71-b9f4-cdcd587f82e5
 - **Open Source:** under the Apache 2.0 License.
 
 ### What's new?
-- Macro Engine System (Loosely Similar to SillyTavern).
+- Macro Engine System.
 - LLM Initiative System.
 - Lorebook System.
 
