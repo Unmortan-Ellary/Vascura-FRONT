@@ -62,7 +62,7 @@ Inspired by SillyTavern's macro system, this engine allows special macros / func
 - {{language}} -> "en-US" - System Language.
 - {{roll 2d6}} -> "8" - Random Dice Generator (Any Kind).
 - {{pick A|B|C}} -> "B" - Random Choice out of 2+ Options.
-- {{lore Red Dragon}} -> "Red dragons are ancient..." (Injects Lore by Entry Name).
+- {{lore Red Dragon}} -> "Red dragons are ancient..." - Injects Lore by Entry Name.
 - {{math 10 + 5}} -> "15" - Math functions +, -, *, /, () supports Macro nesting.
 
 ### Useful Links to OpenAI API Compatible Endpoints:
