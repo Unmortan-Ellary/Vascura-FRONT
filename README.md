@@ -56,17 +56,17 @@ Timer based system that force LLM to take Initiative and start new conversations
 Inspired by SillyTavern's macro system, this engine allows macros / functions execution by parsing System Prompt + Lorebook Entries. Example: `Current Date is {{date}}, Time is {{time}}, Today is {{weekday}}, User Language is {{language}}, User will drink {{pick Tea|Milk|Coffee}}, User's happy number for today is {{roll 1d100}}, Favorite songs: {{lore My Favorite Songs List}}, Random Math: {{math {{roll 1d20}} + (5 + 2)}}.` for LLM this text in System Prompt will be converted to `Current Date is 2023-10-27, Time is 12:30, Today is Friday, User Language is en-US, User will drink Milk, User's happy number for today is 78, Favorite songs: My Top 10..., Random Math: 25.` Please read the Macro Engine Guide for more info about each macro.
 
 ### Macro Engine Guide (WIP):
-1. **How it works:** Right now Macro Engine parse only the final System Prompt (System Prompt + Lorebook Entries + Web Search). So please use this MACRO keys in Lorebook and System Prompt, they will not work anywhere else. Engine will search for MACRO keys like `{{time}}` execute its function and replace it with the result data `14:30`. A temporal processed System Prompt will be created and pushed to LLM, not affecting the permanent System Prompt or Lorebook, so everything will be recalculated every time message is sent to LLM. Keys are not-case sensitive and can be used as `{{time}}`, `{{TIME}}`, `{{Time}}` etc.
+1. **How it works:** Right now Macro Engine parse only the final System Prompt (System Prompt + Lorebook Entries + Web Search). So please use MACRO keys in Lorebook and System Prompt, they will not work anywhere else. Engine will search for MACRO keys like `{{time}}` execute its function and replace it with the result data `14:30`. A temporal processed System Prompt will be created and pushed to LLM, not affecting the permanent System Prompt or Lorebook, so everything will be recalculated every time message is sent to LLM. Keys are not-case sensitive and can be used as `{{time}}`, `{{TIME}}`, `{{Time}}` etc.
 
 2. **MACRO Keys:**
-    - {{time}} -> "14:30" - Current Time.
-    - {{date}} -> "2023-10-27" - Current Date.
-    - {{weekday}} -> "Friday" - Current Day of the Week.
-    - {{language}} -> "en-US" - System Language.
-    - {{roll 2d6}} -> "8" - Random Dice Generator (Any Kind).
-    - {{pick A|B|C}} -> "B" - Random Choice out of 2+ Options.
-    - {{lore Red Dragon}} -> "Red dragons are ancient..." - Injects Lore by Entry Name.
-    - {{math 10 + 5}} -> "15" - Math functions +, -, *, /, () supports Macro nesting.
+    - `Local Time is {{time}}` -> `Local Time is 14:30` - Current Time.
+    - `Today date is {{date}}` -> `Today date is 2023-10-27` - Current Date.
+    - `Today is {{weekday}}` -> `Today is Friday` - Current Day of the Week.
+    - `User System Language is {{language}}` -> `User System Language is en-US` - Browser Language in a form of `en-US`, `en-GB` etc.
+    - `The Dragon hits you on {{roll 2d6}} HP` -> `The Dragon hits you on 8 HP` - Random Dice Roll function, can generate any kind of rolls that follows NdN loggic: 1d6, 2d10, 3d20. Can be used as simple random number generator: 1d1000 etc.
+    - `You found a Book about Red Dragons: {{lore Red Dragon}}` -> `You found a Book about Red Dragons: Red dragons are ancient...` - Will search Lorebook Entry and injects Lore by Entry's Name, not-case sensitive. If added Lorebook Entry have MACRO keys inside it, those keys also be processed, supports MACRO nesting.
+    - `You better choose {{pick A|B|C}} Section` -> `You better choose B Section` - Random Choice out of 2+ Options, supports MACRO nesting.
+    - `You have {{math 10 + 5}} gold left` -> `You have 15 gold left` - Math function + - * / () will strip the text, supports MACRO nesting.
 
 ### Useful Links to OpenAI API Compatible Endpoints:
 - `https://generativelanguage.googleapis.com/v1beta/openai/v1` (Google API).
