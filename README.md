@@ -2,11 +2,12 @@
 
 https://github.com/user-attachments/assets/e0d3f51d-e8ca-4f71-b9f4-cdcd587f82e5
 
-### Frontend is designed around core ideas:
+### Frontend's Core Ideas:
 - **On-the-Spot Text Editing:** Fast and precise control over editing and altering text.
 - **Dependency-Free:** No downloads, no Python, no Node.js - just a single compact (400~ kb) HTML file that runs in your browser.
 - **Focused:** Only essential tools and features that serve the main concept.
 - **Context-Effective Web Search:** Should find info and links and fit in 4096 tokens limit.
+- **Macro Engine:** Built in macro functions that can be easily triggered by LLM's context.
 - **OpenAI-compatible API:** The most widely supported standard, chat-completion format.
 - **Open Source:** under the Apache 2.0 License.
 
