@@ -53,7 +53,10 @@ Use the Lorebook System to create text entries and dynamically inject them into 
 Timer based system that force LLM to take Initiative and start new conversations to engage with the user (even with empty chats), messaging multiple times in a row trying to engage with AFK user on its own, continue to perform given task, acting as different characters each new message (if instructed). Will use Lorebook injections, can use Web Search to find fresh information about last topic of conversation.
 
 12. **Macro Engine:**
-Inspired by SillyTavern's Macros system, this system allows special macros / functions execution by parsing `System Prompt + Lorebook Entries`. Example: `Current Date is {{date}}, Time is {{time}}, Today is {{weekday}}, User Language is {{language}}, User will drink {{pick Tea|Milk|Coffee}}, User's happy number for today is {{roll 1d100}}, Favorite songs: {{lore My Favorite Songs List}}, Random Math: {{math {{roll 1d20}} + (5 + 2)}}.` this text in System Prompt will be converted to `Current Date is 2023-10-27, Time is 12:30, Today is Friday, User Language is en-US, User will drink Milk, User's happy number for today is 78, Favorite songs: My Top 10..., Random Math: 25.`. Please read the Macro Engine Guide if you're interested.
+Inspired by SillyTavern's Macros system, this system allows special macros / functions execution by parsing System Prompt + Lorebook Entries. Example: "Current Date is `{{date}}`, Time is `{{time}}`, Today is `{{weekday}}`, User Language is `{{language}}`, User will drink `{{pick Tea|Milk|Coffee}}`, User's happy number for today is `{{roll 1d100}}`, Favorite songs: `{{lore My Favorite Songs List}}`, Random Math: `{{math {{roll 1d20}} + (5 + 2)}}`." this text in System Prompt will be converted to "Current Date is `2023-10-27`, Time is `12:30`, Today is `Friday`, User Language is `en-US`, User will drink `Milk`, User's happy number for today is `78`, Favorite songs: `My Top 10...`, Random Math: `25`.". Please read the Macro Engine Guide if you're interested.
+
+### Macro Engine Guide:
+- WIP
 
 ### Useful Links to OpenAI API Compatible Endpoints:
 - `https://generativelanguage.googleapis.com/v1beta/openai/v1` (Google API).
