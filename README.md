@@ -64,7 +64,7 @@ Inspired by SillyTavern's macro system, this engine allows macros / functions ex
     - `Today is {{weekday}}` -> `Today is Friday` - Current Day of the Week.
     - `User System Language is {{language}}` -> `User System Language is en-US` - Browser Language in a form of `en-US`, `en-GB` etc.
     - `The Dragon hits you on {{roll 2d6}} HP` -> `The Dragon hits you on 8 HP` - Random Dice Roll function, can generate any kind of rolls that follows NdN loggic: 1d6, 2d10, 3d20. Can be used as simple random number generator: 1d1000 etc.
-    - `You found a Book about Red Dragons: {{lore Red Dragon}}` -> `You found a Book about Red Dragons: Red dragons are ancient...` - Will search Lorebook Entry by Entry's Name and injects is Lore data, not-case sensitive. If added Lorebook Entry have MACRO keys inside it, those keys also be processed, supports MACRO nesting.
+    - `You found a Book about Red Dragons: {{lore Red Dragon}}` -> `You found a Book about Red Dragons: Red dragons are ancient...` - Will search Lorebook for Entry's Name and injects its Lore data, not-case sensitive. If added Lorebook Entry have MACRO keys inside it - those keys also be processed, supports MACRO nesting.
     - `You better choose {{pick A|B|C}} section` -> `You better choose B section` - Random Choice out of 2+ Options, supports MACRO nesting.
     - `You have {{math 10 + 5}} gold left` -> `You have 15 gold left` - Math function + - * / (), will remove the text, supports MACRO nesting.
 
