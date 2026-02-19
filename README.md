@@ -60,8 +60,8 @@ Inspired by SillyTavern's macro system, this engine allows macros / functions ex
 1. **How it Works:** Right now Macro Engine parse only the final System Prompt (System Prompt + Lorebook Entries + Web Search). So please use MACRO keys in Lorebook and System Prompt, they will not work anywhere else. Engine will search for MACRO keys like `{{time}}` execute its function and replace it with the result data `14:30`. A temporal processed System Prompt will be created and pushed to LLM, not affecting the permanent System Prompt or Lorebook, so everything will be recalculated every time message is sent to LLM. Keys are not-case sensitive and can be used as `{{time}}`, `{{TIME}}`, `{{Time}}` etc. Engine supports nesting - Macro in Macro, but not ideally.
 
 2. **MACRO Keys:**
-    1. **`{{time}}`**: `Local Time is {{time}}` -> `Local Time is 14:30` - Current Time.
-    2. **`{{date}}`**: `Today date is {{date}}` -> `Today date is 2023-10-27` - Current Date.
+    - **`{{time}}`**: `Local Time is {{time}}` -> `Local Time is 14:30` - Current Time.
+    - **`{{date}}`**: `Today date is {{date}}` -> `Today date is 2023-10-27` - Current Date.
     - **`{{weekday}}`**: `Today is {{weekday}}` -> `Today is Friday` - Current Day of the Week.
     - **`{{language}}`**: `User System Language is {{language}}` -> `User System Language is en-US` - Browser Language in a form of `en-US`, `en-GB` etc.
     - **`{{roll NdN}}`**: `The Dragon hits you on {{roll 2d6}} HP` -> `The Dragon hits you on 8 HP` - Random Dice Roll function, can generate any kind of rolls that follows NdN loggic: 1d6, 2d10, 3d20. Can be used as simple random number generator: 1d1000 etc. Supports `{{roll}}`, `{{pick}}`, `{{math}}`, `{{lore}}` nesting - `{{roll {{roll 1d10}}d{{lore Fireball Damage}}}}`, `{{roll {{pick 1|2|3}}d{{math {{roll 1d10}} * 2}}}}`.
