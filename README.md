@@ -69,9 +69,11 @@ Inspired by SillyTavern's macro system, this engine allows macros / functions ex
     - **`{{pick A|B|C}}`**: `You better choose {{pick right|left|middle}} section` -> `You better choose right section` - Random Choice out of 2+ Options. Supports only `{{roll}}` nesting - `{{pick {{roll 1d6}}|{{roll 2d6}}|{{roll 3d6}}}}`.
     - **`{{math EXPRESSION}}`**: `You have {{math 10 + 5}} gold left` -> `You have 15 gold left` - Math function + - * / (), will remove any text inside the key. Supports `{{roll}}`, `{{pick}}`, `{{lore}}` nesting - `{{math {{lore Fireball Damage}} + {{roll 1d6}} * {{pick 2|3|4}}}}`.
 
-### Useful Links to OpenAI API Compatible Endpoints:
+### Useful Links to OpenAI API Compatible Endpoints (free):
 - `https://generativelanguage.googleapis.com/v1beta/openai/v1` (Google API).
 - `https://openrouter.ai/api/v1` (OpenRouter API).
+- `https://api.cerebras.ai/v1` (Cerebras API).
+- `https://api.groq.com/openai/v1` (Groq API).
 - `https://api.mistral.ai/v1` (Mistral API).
 
 ### allOrigins
