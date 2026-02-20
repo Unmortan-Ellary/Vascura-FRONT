@@ -71,7 +71,7 @@ Inspired by SillyTavern's macro system, this engine allows macros / functions ex
     - **`{{roll NdN}}`**: `The Dragon hits you on {{roll 2d6}} HP` -> `The Dragon hits you on 8 HP` - Random Dice Roll function, can generate any kind of rolls that follows NdN loggic: 1d6, 2d10, 3d20. Can be used as simple random number generator: 1d1000 etc.
     - **`{{pick A|B|C}}`**: `You better choose {{pick right|left|middle}} section` -> `You better choose right section` - Random Choice out of 2+ Options.
 4. **Variables:**
-    - **`{{set VAR_NAME 100}}`**: `{{set PlayerHP 100}}` - Create or modify the `PlayerHP` variable and set its value to `100`, it can be a number or a text.
+    - **`{{set VAR_NAME DATA}}`**: `{{set PlayerHP 100}}` - Create or modify the `PlayerHP` variable and set its value to `100`, it can be a number or a text.
     - **`{{get VAR_NAME}}`**: `{{get PlayerHP}}` -> `100` - Injects `PlayerHP` variable value or text.
     - **`{{wipe}}`**: This will CLEAR the entire array of variables for that particular chat, each chat has its own unique array.
 5. **Complex MACRO keys:**
