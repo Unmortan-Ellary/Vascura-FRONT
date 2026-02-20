@@ -59,19 +59,23 @@ Inspired by SillyTavern's macro system, this engine allows macros / functions ex
 ### Macro Engine Guide:
 1. **How it Works:** Right now Macro Engine parse only the final System Prompt (System Prompt + Lorebook Entries). So please use MACRO keys in Lorebook and System Prompt, they will not work anywhere else. Engine will search for MACRO keys like `{{time}}` execute its function and replace it with the result data `14:30`. A temporal processed System Prompt will be created and pushed to LLM, not affecting the permanent System Prompt or Lorebook, so everything will be recalculated every time message is sent to LLM. Keys are not-case sensitive and can be used as `{{time}}`, `{{TIME}}`, `{{Time}}` etc. Engine supports nesting - Macro in Macro, nested Macros executed first.
 
-2. **Simple MACRO Keys:**
+2. **Simple Data:**
     - **`{{time}}`**: `Local Time is {{time}}` -> `Local Time is 14:30` - Current Time.
     - **`{{date}}`**: `Today date is {{date}}` -> `Today date is 2023-10-27` - Current Date.
     - **`{{weekday}}`**: `Today is {{weekday}}` -> `Today is Friday` - Current Day of the Week.
     - **`{{language}}`**: `User System Language is {{language}}` -> `User System Language is en-US` - Browser Language in a form of `en-US`, `en-GB` etc.
-3. **Injections MACRO Keys:**
-    - **`{{lore ENTRY_NAME}}`**: `You found a Book about Red Dragons: {{lore Red Dragon}}` -> `You found a Book about Red Dragons: Red dragons are ancient...` - Will search Lorebook for Entry Name (Red Dragon) and injects its Entry Prompt along with image, not-case sensitive. If added Lorebook Entry have MACRO keys inside it - those keys also be processed. This MACRO have high priority and will work even if Lorebook is disabled. Example: `{{lore {{pick Red Dragon|Black Dragon|Green Dragon}}}}`.
+3. **Injections:**
+    - **`{{lore ENTRY_NAME}}`**: `You found a Book about Red Dragons: {{lore Red Dragon}}` -> `You found a Book about Red Dragons: Red dragons are ancient...` - Will search Lorebook for Entry Name (Red Dragon) and injects its Entry Prompt along with image, not-case sensitive. If added Lorebook Entry have MACRO keys inside it - those keys also be processed. This MACRO have high priority and will work even if Lorebook is disabled.
     - **`{{image ENTRY_NAME}}`**: `Red Dragon spreads its wings and takes to the air. {{image Red Dragon Flying}}` -> `Red Dragon spreads its wings and takes to the air.` - Image from Lorebook Entry (Red Dragon Flying) will appear in the chat bellow the last USER message.
-3. **Randoms MACRO Keys**:
-    - **`{{roll NdN}}`**: `The Dragon hits you on {{roll 2d6}} HP` -> `The Dragon hits you on 8 HP` - Random Dice Roll function, can generate any kind of rolls that follows NdN loggic: 1d6, 2d10, 3d20. Can be used as simple random number generator: 1d1000 etc. Example: `{{roll {{pick 1|2|3}}d{{math {{roll 1d10}} * 2}}}}`.
-    - **`{{pick A|B|C}}`**: `You better choose {{pick right|left|middle}} section` -> `You better choose right section` - Random Choice out of 2+ Options. Example: `{{pick {{get OptionOne}}|{{lore Option Two}}|{{roll 1d3}}}}`.
-4. **Complex MACRO Keys:**
-    - **`{{math EXPRESSION}}`**: `You have {{math 10 + 5}} gold left` -> `You have 15 gold left` - Math function + - * / (), will remove any text inside the key. Example: `{{math {{lore Fireball Damage}} + {{roll 1d6}} * {{pick 2|3|4}}}}`.
+3. **Randoms**:
+    - **`{{roll NdN}}`**: `The Dragon hits you on {{roll 2d6}} HP` -> `The Dragon hits you on 8 HP` - Random Dice Roll function, can generate any kind of rolls that follows NdN loggic: 1d6, 2d10, 3d20. Can be used as simple random number generator: 1d1000 etc.
+    - **`{{pick A|B|C}}`**: `You better choose {{pick right|left|middle}} section` -> `You better choose right section` - Random Choice out of 2+ Options.
+4. **Variables:**
+    - **`{{set VAR_NAME 100}}`**: `{{set PlayerHP 100}}` - Create or modify the `PlayerHP` variable and set its value to `100`, it can be a number or a text.
+    - **`{{get VAR_NAME}}`**: `{{get PlayerHP}}` -> `100` - Injects `PlayerHP` variable value or text.
+    - **`{{wipe}}`**: This will CLEAR the entire array of variables for that particular chat, each chat has its own unique array.
+5. **Complex MACRO keys:**
+    - **`{{math EXPRESSION}}`**: `You have {{math 10 + 5}} gold left` -> `You have 15 gold left` - Math function + - * / (), will remove any text inside the key.
 
 ### Useful Links to OpenAI API Compatible Endpoints (free):
 - `https://generativelanguage.googleapis.com/v1beta/openai/v1` (Google API).
