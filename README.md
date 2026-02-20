@@ -4,17 +4,17 @@ https://github.com/user-attachments/assets/e0d3f51d-e8ca-4f71-b9f4-cdcd587f82e5
 
 ### Frontend's Core Ideas:
 - **On-the-Spot Text Editing:** Fast and precise control over editing and altering text.
-- **Dependency-Free:** No downloads, no Python, no Node.js - just a single compact (400~ kb) HTML file that runs in your browser.
+- **Dependency-Free:** No downloads, no Python, no Node.js - just a single compact (500~ kb) HTML file that runs in your browser.
 - **Focused:** Only essential tools and features that serve the main concept.
 - **Context-Effective Web Search:** Should find info and links and fit in 4096 tokens limit.
-- **Macro Engine:** Built in macro functions that can be easily triggered by LLM's context parsing.
+- **Macro Engine:** Built-in macro scripting, easily triggered by LLM context parsing.
 - **OpenAI-compatible API:** The most widely supported standard, chat-completion format.
 - **Open Source:** under the Apache 2.0 License.
 
 ### What's new?
+- Lorebook Image System.
 - Macro Engine System.
 - LLM Initiative System.
-- Lorebook System.
 
 ### Features: 
 
@@ -48,7 +48,7 @@ By default, the frontend is configured for an easy start with LM Studio: just tu
 Supports thinking models that use `<think></think>` tags or if your endpoint returns only the final answer (without a thinking step), enable the "Thinking Model" switch to activate compatibility mode - this ensures Web Search and other features work correctly.
 
 10. **Lorebook:**
-Use the Lorebook System to create text entries and dynamically inject them into the System Prompt as internal LLM memory. Injection is triggered by custom tags detected in the last messages.
+Use the Lorebook System to create text entries and dynamically inject them into the System Prompt as internal LLM memory. Injection is triggered by custom tags detected in the last messages. Lorebook works as database for text data, images, values. Images also will be injected into chat.
 
 11. **LLM Initiative:**
 Timer based system that force LLM to take Initiative and start new conversations to engage with the user (even with empty chats), messaging multiple times in a row trying to engage with AFK user on its own, continue to perform given task, acting as different characters each new message (if instructed). Will use Lorebook injections, can use Web Search to find fresh information about last topic of conversation.
@@ -57,17 +57,17 @@ Timer based system that force LLM to take Initiative and start new conversations
 Inspired by SillyTavern's macro system, this engine allows macros / functions execution by parsing System Prompt + Lorebook Entries. Example: `Current Date is {{date}}, Time is {{time}}, Today is {{weekday}}, User Language is {{language}}, User will drink {{pick Tea|Milk|Coffee}}, User's happy number for today is {{roll 1d100}}, Favorite songs: {{lore My Favorite Songs List}}, Random Math: {{math {{roll 1d20}} + (5 + 2)}}.` for LLM this text in System Prompt will be converted to `Current Date is 2023-10-27, Time is 12:30, Today is Friday, User Language is en-US, User will drink Milk, User's happy number for today is 78, Favorite songs: My Top 10..., Random Math: 25.` Please read the Macro Engine Guide for more info about each macro.
 
 ### Macro Engine Guide:
-1. **How it Works:** Right now Macro Engine parse only the final System Prompt (System Prompt + Lorebook Entries + Web Search). So please use MACRO keys in Lorebook and System Prompt, they will not work anywhere else. Engine will search for MACRO keys like `{{time}}` execute its function and replace it with the result data `14:30`. A temporal processed System Prompt will be created and pushed to LLM, not affecting the permanent System Prompt or Lorebook, so everything will be recalculated every time message is sent to LLM. Keys are not-case sensitive and can be used as `{{time}}`, `{{TIME}}`, `{{Time}}` etc. Engine supports nesting - Macro in Macro, nested Macros executed first.
+1. **How it Works:** Right now Macro Engine parse only the final System Prompt (System Prompt + Lorebook Entries). So please use MACRO keys in Lorebook and System Prompt, they will not work anywhere else. Engine will search for MACRO keys like `{{time}}` execute its function and replace it with the result data `14:30`. A temporal processed System Prompt will be created and pushed to LLM, not affecting the permanent System Prompt or Lorebook, so everything will be recalculated every time message is sent to LLM. Keys are not-case sensitive and can be used as `{{time}}`, `{{TIME}}`, `{{Time}}` etc. Engine supports nesting - Macro in Macro, nested Macros executed first.
 
 2. **MACRO Keys:**
     - **`{{time}}`**: `Local Time is {{time}}` -> `Local Time is 14:30` - Current Time.
     - **`{{date}}`**: `Today date is {{date}}` -> `Today date is 2023-10-27` - Current Date.
     - **`{{weekday}}`**: `Today is {{weekday}}` -> `Today is Friday` - Current Day of the Week.
     - **`{{language}}`**: `User System Language is {{language}}` -> `User System Language is en-US` - Browser Language in a form of `en-US`, `en-GB` etc.
-    - **`{{roll NdN}}`**: `The Dragon hits you on {{roll 2d6}} HP` -> `The Dragon hits you on 8 HP` - Random Dice Roll function, can generate any kind of rolls that follows NdN loggic: 1d6, 2d10, 3d20. Can be used as simple random number generator: 1d1000 etc. Supports `{{roll}}`, `{{pick}}`, `{{math}}`, `{{lore}}` nesting - `{{roll {{roll 1d10}}d{{lore Fireball Damage}}}}`, `{{roll {{pick 1|2|3}}d{{math {{roll 1d10}} * 2}}}}`.
-    - **`{{lore ENTRY_NAME}}`**: `You found a Book about Red Dragons: {{lore Red Dragon}}` -> `You found a Book about Red Dragons: Red dragons are ancient...` - Will search Lorebook for Entry Name (Red Dragon) and injects its Entry Prompt, not-case sensitive. If added Lorebook Entry have MACRO keys inside it - those keys also be processed. This MACRO have high priority and will work even if Lorebook is disabled. Supports `{{roll}}`, `{{pick}}` nesting - `{{lore {{pick Red Dragon|Black Dragon|Green Dragon}}}}`, `{{lore Floor {{roll 1d10}} Apartment Door {{pick Green|Red|Black}}}}`.
-    - **`{{pick A|B|C}}`**: `You better choose {{pick right|left|middle}} section` -> `You better choose right section` - Random Choice out of 2+ Options. Supports only `{{roll}}` nesting - `{{pick {{roll 1d6}}|{{roll 2d6}}|{{roll 3d6}}}}`.
-    - **`{{math EXPRESSION}}`**: `You have {{math 10 + 5}} gold left` -> `You have 15 gold left` - Math function + - * / (), will remove any text inside the key. Supports `{{roll}}`, `{{pick}}`, `{{lore}}` nesting - `{{math {{lore Fireball Damage}} + {{roll 1d6}} * {{pick 2|3|4}}}}`.
+    - **`{{roll NdN}}`**: `The Dragon hits you on {{roll 2d6}} HP` -> `The Dragon hits you on 8 HP` - Random Dice Roll function, can generate any kind of rolls that follows NdN loggic: 1d6, 2d10, 3d20. Can be used as simple random number generator: 1d1000 etc. Example: `{{roll {{pick 1|2|3}}d{{math {{roll 1d10}} * 2}}}}`.
+    - **`{{lore ENTRY_NAME}}`**: `You found a Book about Red Dragons: {{lore Red Dragon}}` -> `You found a Book about Red Dragons: Red dragons are ancient...` - Will search Lorebook for Entry Name (Red Dragon) and injects its Entry Prompt along with image, not-case sensitive. If added Lorebook Entry have MACRO keys inside it - those keys also be processed. This MACRO have high priority and will work even if Lorebook is disabled. Example: `{{lore {{pick Red Dragon|Black Dragon|Green Dragon}}}}`.
+    - **`{{pick A|B|C}}`**: `You better choose {{pick right|left|middle}} section` -> `You better choose right section` - Random Choice out of 2+ Options. Example: `{{pick {{lore dog}}|{{lore cat}}|{{lore bird}}}}`.
+    - **`{{math EXPRESSION}}`**: `You have {{math 10 + 5}} gold left` -> `You have 15 gold left` - Math function + - * / (), will remove any text inside the key. Example: `{{math {{lore Fireball Damage}} + {{roll 1d6}} * {{pick 2|3|4}}}}`.
 
 ### Useful Links to OpenAI API Compatible Endpoints (free):
 - `https://generativelanguage.googleapis.com/v1beta/openai/v1` (Google API).
