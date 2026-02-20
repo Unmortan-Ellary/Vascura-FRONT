@@ -73,9 +73,11 @@ Inspired by SillyTavern's macro system, this engine allows macros / functions ex
 4. **Variables:**
     - **`{{set VAR_NAME DATA}}`**: `{{set PlayerHP 100}}` - Create or modify the `PlayerHP` variable and set its value to `100`, it can be a number or a text.
     - **`{{get VAR_NAME}}`**: `{{get PlayerHP}}` -> `100` - Injects `PlayerHP` variable value or text.
-    - **`{{wipe}}`**: This will CLEAR the entire array of variables for that particular chat, each chat has its own unique array.
+    - **`{{wipe}}`**: This will CLEAR the entire array of variables for chat, each chat has its own unique array.
 5. **Complex MACRO keys:**
     - **`{{math EXPRESSION}}`**: `You have {{math 10 + 5}} gold left` -> `You have 15 gold left` - Math function + - * / (), will remove any text inside the key.
+    - **`{{math EXPRESSION}}`**: `You have {{math 10 + 5}} gold left` -> `You have 15 gold left` - Math function + - * / (), will remove any text inside the key.
+        - f
 
 ### Useful Links to OpenAI API Compatible Endpoints (free):
 - `https://generativelanguage.googleapis.com/v1beta/openai/v1` (Google API).
