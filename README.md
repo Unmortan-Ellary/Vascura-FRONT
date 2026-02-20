@@ -84,6 +84,10 @@ Inspired by SillyTavern's macro system, this engine allows macros / functions ex
         - `>` - Greater than.
         - `<` - Less than.
         - `includes` - String contains check, `{{if "Is this dress red" includes "red" ? Yes:No}}` -> `Yes`.
+6. **Nesting and Syntax Example:**
+    ```
+    CODE
+    ```
 
 ### Useful Links to OpenAI API Compatible Endpoints (free):
 - `https://generativelanguage.googleapis.com/v1beta/openai/v1` (Google API).
