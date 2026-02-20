@@ -48,7 +48,7 @@ By default, the frontend is configured for an easy start with LM Studio: just tu
 Supports thinking models that use `<think></think>` tags or if your endpoint returns only the final answer (without a thinking step), enable the "Thinking Model" switch to activate compatibility mode - this ensures Web Search and other features work correctly.
 
 10. **Lorebook:**
-Use the Lorebook System to create text entries and dynamically inject them into the System Prompt as internal LLM memory. Injection is triggered by custom tags detected in the last messages. Lorebook works as database for text data, images, values. Images also will be injected into chat.
+Use the Lorebook System to create text entries and dynamically inject them into the System Prompt as internal LLM memory. Injection is triggered by custom tags detected in the last messages. Lorebook works as database for text data, images, values. Images also will be injected into chat. Parameter "Messages to Scan" will control how often same image will appear in the chat.
 
 11. **LLM Initiative:**
 Timer based system that force LLM to take Initiative and start new conversations to engage with the user (even with empty chats), messaging multiple times in a row trying to engage with AFK user on its own, continue to perform given task, acting as different characters each new message (if instructed). Will use Lorebook injections, can use Web Search to find fresh information about last topic of conversation.
@@ -64,8 +64,9 @@ Inspired by SillyTavern's macro system, this engine allows macros / functions ex
     - **`{{date}}`**: `Today date is {{date}}` -> `Today date is 2023-10-27` - Current Date.
     - **`{{weekday}}`**: `Today is {{weekday}}` -> `Today is Friday` - Current Day of the Week.
     - **`{{language}}`**: `User System Language is {{language}}` -> `User System Language is en-US` - Browser Language in a form of `en-US`, `en-GB` etc.
-3. **Injection MACRO Keys:**
+3. **Injections MACRO Keys:**
     - **`{{lore ENTRY_NAME}}`**: `You found a Book about Red Dragons: {{lore Red Dragon}}` -> `You found a Book about Red Dragons: Red dragons are ancient...` - Will search Lorebook for Entry Name (Red Dragon) and injects its Entry Prompt along with image, not-case sensitive. If added Lorebook Entry have MACRO keys inside it - those keys also be processed. This MACRO have high priority and will work even if Lorebook is disabled. Example: `{{lore {{pick Red Dragon|Black Dragon|Green Dragon}}}}`.
+    - **`{{image ENTRY_NAME}}`**: `Red Dragon spreads its wings and takes to the air. {{image Red Dragon Flying}}` -> `Red Dragon spreads its wings and takes to the air.` - Image from Lorebook Entry (Red Dragon Flying) will appear in the chat bellow the last USER message.
 3. **Randoms MACRO Keys**
     - **`{{roll NdN}}`**: `The Dragon hits you on {{roll 2d6}} HP` -> `The Dragon hits you on 8 HP` - Random Dice Roll function, can generate any kind of rolls that follows NdN loggic: 1d6, 2d10, 3d20. Can be used as simple random number generator: 1d1000 etc. Example: `{{roll {{pick 1|2|3}}d{{math {{roll 1d10}} * 2}}}}`.
     - **`{{pick A|B|C}}`**: `You better choose {{pick right|left|middle}} section` -> `You better choose right section` - Random Choice out of 2+ Options. Example: `{{pick {{get OptionOne}}|{{lore Option Two}}|{{roll 1d3}}}}`.
