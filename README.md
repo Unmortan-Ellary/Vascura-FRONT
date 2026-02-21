@@ -67,14 +67,14 @@ Inspired by SillyTavern's macro system, this engine allows macros / functions ex
 3. **Injections:**
     - **`{{lore ENTRY_NAME}}`**: `You found a Book about Red Dragons: {{lore Red Dragon}}` -> `You found a Book about Red Dragons: Red dragons are ancient...` - Will search Lorebook for Entry Name (Red Dragon) and injects its Entry Prompt along with image, not-case sensitive. If added Lorebook Entry have MACRO keys inside it - those keys also be processed. This MACRO have high priority and will work even if Lorebook is disabled.
     - **`{{image ENTRY_NAME}}`**: `Red Dragon spreads its wings and takes to the air. {{image Red Dragon Flying}}` -> `Red Dragon spreads its wings and takes to the air.` - Image from Lorebook Entry (Red Dragon Flying) will appear in the chat bellow the last USER message.
-3. **Randoms**:
+4. **Randoms**:
     - **`{{roll NdN}}`**: `The Dragon hits you on {{roll 2d6}} HP` -> `The Dragon hits you on 8 HP` - Random Dice Roll function, can generate any kind of rolls that follows NdN loggic: 1d6, 2d10, 3d20. Can be used as simple random number generator: 1d1000 etc.
     - **`{{pick A|B|C}}`**: `You better choose {{pick right|left|middle}} section` -> `You better choose right section` - Random Choice out of 2+ Options.
-4. **Variables:**
+5. **Variables:**
     - **`{{set VAR_NAME DATA}}`**: `{{set PlayerHP 100}}` - Create or modify the `PlayerHP` variable and set its value to `100`, it can be a number or a text.
     - **`{{get VAR_NAME}}`**: `{{get PlayerHP}}` -> `100` - Injects `PlayerHP` variable value or text.
     - **`{{wipe}}`**: This will CLEAR the entire array of variables for chat, each chat has its own unique array.
-5. **Complex MACRO keys:**
+6. **Logic MACRO keys:**
     - **`{{math EXPRESSION}}`**: `You have {{math {{get PlayerGold}} + 5}} gold left` -> `You have 15 gold left` - Math functions + - * / (), will remove any text inside the key.
     - **`{{if VALUE COND VALUE ? IF_TRUE:IF_FALSE}}`**: `Is five more than three? Oracle: {{if 5 > 3 ? Yes:No}}` -> `Is five more than three? Oracle: Yes` - Classic IF functions, it can be a number or a text.
         - `>=` - Greater than or equal.
@@ -84,9 +84,55 @@ Inspired by SillyTavern's macro system, this engine allows macros / functions ex
         - `>` - Greater than.
         - `<` - Less than.
         - `includes` - String contains check, `{{if "Is this dress red" includes "red" ? Yes:No}}` -> `Yes`.
-6. **Nesting and Syntax Example:**
+7. **Nesting and Syntax Example:**
     ```
-    CODE
+    {{ // Everything that is between empty {{}} will be deleted, use this to clean newlines, comments etc.
+       This code checks that player have 300 Gold to buy a Sword and place it into one of 3 Inventory Slots,
+       At the end script will return result, success or not and the gold left.
+    
+    {{wipe}}                                                       // Wipes all the variables in the array.
+    {{set Gold 1000}}                                              // Gold for the Player.
+    {{set Slot1 Axe}}                                              // Player got Axe in Slot 1.
+    {{set AddedFlag 0}}                                            // Logic Flag.
+    {{set FeedbackText 0}}                                         // For End result.
+    {{set CanAfford {{if {{get Gold}} >= 300 ? 1 : 0}}}}           // Checks that Player has 300 gold.
+    
+    {{set DoAdd {{if {{get Slot1}} = "" ? {{if {{get AddedFlag}} = 0 ? {{get CanAfford}} : 0}} : 0}}}}
+    {{set Slot1 {{if {{get DoAdd}} = 1 ? Sword : {{get Slot1}}}}}}
+    {{set AddedFlag {{if {{get DoAdd}} = 1 ? 1 : {{get AddedFlag}}}}}}
+    {{set FeedbackText {{if {{get DoAdd}} = 1 ? "You buy a sword and place it in slot 1" : {{get FeedbackText}}}}}}
+    
+    {{set DoAdd {{if {{get Slot2}} = "" ? {{if {{get AddedFlag}} = 0 ? {{get CanAfford}} : 0}} : 0}}}}
+    {{set Slot2 {{if {{get DoAdd}} = 1 ? Sword : {{get Slot2}}}}}}
+    {{set AddedFlag {{if {{get DoAdd}} = 1 ? 1 : {{get AddedFlag}}}}}}
+    {{set FeedbackText {{if {{get DoAdd}} = 1 ? "You buy a sword and place it in slot 2" : {{get FeedbackText}}}}}}
+    
+    {{set DoAdd {{if {{get Slot3}} = "" ? {{if {{get AddedFlag}} = 0 ? {{get CanAfford}} : 0}} : 0}}}}
+    {{set Slot3 {{if {{get DoAdd}} = 1 ? Sword : {{get Slot3}}}}}}
+    {{set AddedFlag {{if {{get DoAdd}} = 1 ? 1 : {{get AddedFlag}}}}}}
+    {{set FeedbackText {{if {{get DoAdd}} = 1 ? "You buy a sword and place it in slot 3" : {{get FeedbackText}}}}}}
+    
+    {{set DoAdd {{if {{get Slot4}} = "" ? {{if {{get AddedFlag}} = 0 ? {{get CanAfford}} : 0}} : 0}}}}
+    {{set Slot4 {{if {{get DoAdd}} = 1 ? Sword : {{get Slot4}}}}}}
+    {{set AddedFlag {{if {{get DoAdd}} = 1 ? 1 : {{get AddedFlag}}}}}}
+    {{set FeedbackText {{if {{get DoAdd}} = 1 ? "You buy a sword and place it in slot 4" : {{get FeedbackText}}}}}}
+    
+    {{set Gold 
+      {{math {{get Gold}} - {{math {{get AddedFlag}} * 300}}
+      }}
+    }}
+    
+    {{if {{get CanAfford}} = 0 
+           ? "No enough money" 
+           : {{if {{get AddedFlag}} = 0 
+               ? "No empty slots" 
+               : {{get FeedbackText}}
+             }}
+    }}
+
+    // Result will be Printed bellow.
+    }}
+    {{get FeedbackText}}, Gold Left {{get Gold}}.
     ```
 
 ### Useful Links to OpenAI API Compatible Endpoints (free):
