@@ -87,7 +87,7 @@ Inspired by SillyTavern's macro system, this engine allows macros / functions ex
 7. **Nesting and Syntax Example:**
     ```
     {{ // Everything that is between empty {{}} will be deleted, use this to clean newlines, comments etc.
-       This code checks that player have 300 Gold to buy a Sword and place it into one of 3 Inventory Slots,
+       This code checks that player has 300 Gold to buy a Sword and place it into one of 3 Inventory Slots,
        At the end script will return result, success or not and the gold left.
     
     {{wipe}}                                                       // Wipes all the variables in the array.
