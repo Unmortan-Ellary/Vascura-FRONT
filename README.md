@@ -76,55 +76,57 @@ Inspired by SillyTavern's macro system, this engine allows macros / functions ex
     - **`{{wipe}}`**: This will CLEAR the entire array of variables for chat, each chat has its own unique array.
 6. **Logic:**
     - **`{{math EXPRESSION}}`**: `You have {{math {{get PlayerGold}} + 5}} gold left` -> `You have 15 gold left` - Math functions + - * / (), will remove any text inside the key.
-    - **`{{if VALUE COND VALUE ? IF_TRUE:IF_FALSE}}`**: `Is five more than three? Oracle: {{if 5 > 3 ? Yes:No}}` -> `Is five more than three? Oracle: Yes` - Classic IF functions, it can be a number or a text.
+    - **`{{if VALUE COND VALUE ?? IF_TRUE::IF_FALSE}}`**: `Is five more than three? Oracle: {{if 5 >> 3 ?? Yes::No}}` -> `Is five more than three? Oracle: Yes` - Classic IF functions, it can be a number or a text.
         - `>=` - Greater than or equal.
         - `<=` - Less than or equal.
         - `!=` - Not equal.
-        - `=` - Equal.
-        - `>` - Greater than.
-        - `<` - Less than.
-        - `includes` - String contains check, `{{if "Is this dress red" includes "red" ? Yes:No}}` -> `Yes`.
+        - `==` - Equal.
+        - `>>` - Greater than.
+        - `<<` - Less than.
+        - `includes` - String contains check, `{{if "Is this dress red" includes "red" ?? Yes::No}}` -> `Yes`.
 7. **Nesting and Syntax Example:**
     ```
     {{ // Everything that is between empty {{}} will be deleted, use this to clean newlines, comments etc.
-       This code checks that player has 300 Gold to buy a Sword and place it into one of 3 Inventory Slots.
-       At the end script will return result, success or not and the gold left.
+       - This code checks that player has 300 Gold to buy a Sword.
+       - Search for empty Inventory Slot (if any).
+       - Set Sword in this Inventory Slot and remove 300 gold from balance.
+       - Inform about results in the end.
     
     {{wipe}}                                                       // Wipes all the variables in the array.
     {{set Gold 1000}}                                              // Gold for the Player.
     {{set Slot1 Axe}}                                              // Player got Axe in Slot 1.
     {{set AddedFlag 0}}                                            // Logic Flag.
     {{set FeedbackText 0}}                                         // For End result.
-    {{set CanAfford {{if {{get Gold}} >= 300 ? 1 : 0}}}}           // Checks that Player has 300 gold.
+    {{set CanAfford {{if {{get Gold}} >= 300 ?? 1 :: 0}}}}         // Checks that Player has 300 gold.
     
-    {{set DoAdd {{if {{get Slot1}} = "" ? {{if {{get AddedFlag}} = 0 ? {{get CanAfford}} : 0}} : 0}}}}
-    {{set Slot1 {{if {{get DoAdd}} = 1 ? Sword : {{get Slot1}}}}}}
-    {{set AddedFlag {{if {{get DoAdd}} = 1 ? 1 : {{get AddedFlag}}}}}}
-    {{set FeedbackText {{if {{get DoAdd}} = 1 ? "You buy a sword and place it in slot 1" : {{get FeedbackText}}}}}}
+    {{set DoAdd {{if {{get Slot1}} == "" ?? {{if {{get AddedFlag}} == 0 ?? {{get CanAfford}} :: 0}} :: 0}}}}
+    {{set Slot1 {{if {{get DoAdd}} == 1 ?? Sword :: {{get Slot1}}}}}}
+    {{set AddedFlag {{if {{get DoAdd}} == 1 ?? 1 :: {{get AddedFlag}}}}}}
+    {{set FeedbackText {{if {{get DoAdd}} == 1 ?? "You buy a sword and place it in slot 1" :: {{get FeedbackText}}}}}}
     
-    {{set DoAdd {{if {{get Slot2}} = "" ? {{if {{get AddedFlag}} = 0 ? {{get CanAfford}} : 0}} : 0}}}}
-    {{set Slot2 {{if {{get DoAdd}} = 1 ? Sword : {{get Slot2}}}}}}
-    {{set AddedFlag {{if {{get DoAdd}} = 1 ? 1 : {{get AddedFlag}}}}}}
-    {{set FeedbackText {{if {{get DoAdd}} = 1 ? "You buy a sword and place it in slot 2" : {{get FeedbackText}}}}}}
+    {{set DoAdd {{if {{get Slot2}} == "" ?? {{if {{get AddedFlag}} == 0 ?? {{get CanAfford}} :: 0}} :: 0}}}}
+    {{set Slot2 {{if {{get DoAdd}} == 1 ?? Sword :: {{get Slot2}}}}}}
+    {{set AddedFlag {{if {{get DoAdd}} == 1 ?? 1 :: {{get AddedFlag}}}}}}
+    {{set FeedbackText {{if {{get DoAdd}} == 1 ?? "You buy a sword and place it in slot 2" :: {{get FeedbackText}}}}}}
     
-    {{set DoAdd {{if {{get Slot3}} = "" ? {{if {{get AddedFlag}} = 0 ? {{get CanAfford}} : 0}} : 0}}}}
-    {{set Slot3 {{if {{get DoAdd}} = 1 ? Sword : {{get Slot3}}}}}}
-    {{set AddedFlag {{if {{get DoAdd}} = 1 ? 1 : {{get AddedFlag}}}}}}
-    {{set FeedbackText {{if {{get DoAdd}} = 1 ? "You buy a sword and place it in slot 3" : {{get FeedbackText}}}}}}
+    {{set DoAdd {{if {{get Slot3}} == "" ?? {{if {{get AddedFlag}} == 0 ?? {{get CanAfford}} :: 0}} :: 0}}}}
+    {{set Slot3 {{if {{get DoAdd}} == 1 ?? Sword :: {{get Slot3}}}}}}
+    {{set AddedFlag {{if {{get DoAdd}} == 1 ?? 1 :: {{get AddedFlag}}}}}}
+    {{set FeedbackText {{if {{get DoAdd}} == 1 ?? "You buy a sword and place it in slot 3" :: {{get FeedbackText}}}}}}
     
     {{set Gold 
       {{math {{get Gold}} - {{math {{get AddedFlag}} * 300}}
       }}
     }}
     
-    {{if {{get CanAfford}} = 0 
-      ? "Not enough money" 
-      : {{if {{get AddedFlag}} = 0 
-          ? "No empty slots" 
-          : {{get FeedbackText}}
+    {{if {{get CanAfford}} == 0 
+      ?? "Not enough money" 
+      :: {{if {{get AddedFlag}} == 0 
+          ?? "No empty slots" 
+          :: {{get FeedbackText}}
         }}
     }}
-
+    
     // Result will be Printed bellow.
     }}
     {{get FeedbackText}}, Gold Left {{get Gold}}.
