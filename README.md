@@ -87,7 +87,7 @@ Inspired by SillyTavern's macro system, this engine allows macros / functions ex
 7. **Nesting and Syntax Example:**
     ```
     {{ // Everything that is between empty {{}} will be deleted, use this to clean newlines, comments etc.
-       This code checks that player has 300 Gold to buy a Sword and place it into one of 3 Inventory Slots,
+       This code checks that player has 300 Gold to buy a Sword and place it into one of 3 Inventory Slots.
        At the end script will return result, success or not and the gold left.
     
     {{wipe}}                                                       // Wipes all the variables in the array.
@@ -111,11 +111,6 @@ Inspired by SillyTavern's macro system, this engine allows macros / functions ex
     {{set Slot3 {{if {{get DoAdd}} = 1 ? Sword : {{get Slot3}}}}}}
     {{set AddedFlag {{if {{get DoAdd}} = 1 ? 1 : {{get AddedFlag}}}}}}
     {{set FeedbackText {{if {{get DoAdd}} = 1 ? "You buy a sword and place it in slot 3" : {{get FeedbackText}}}}}}
-    
-    {{set DoAdd {{if {{get Slot4}} = "" ? {{if {{get AddedFlag}} = 0 ? {{get CanAfford}} : 0}} : 0}}}}
-    {{set Slot4 {{if {{get DoAdd}} = 1 ? Sword : {{get Slot4}}}}}}
-    {{set AddedFlag {{if {{get DoAdd}} = 1 ? 1 : {{get AddedFlag}}}}}}
-    {{set FeedbackText {{if {{get DoAdd}} = 1 ? "You buy a sword and place it in slot 4" : {{get FeedbackText}}}}}}
     
     {{set Gold 
       {{math {{get Gold}} - {{math {{get AddedFlag}} * 300}}
