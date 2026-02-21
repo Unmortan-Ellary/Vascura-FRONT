@@ -74,7 +74,7 @@ Inspired by SillyTavern's macro system, this engine allows macros / functions ex
     - **`{{set VAR_NAME DATA}}`**: `{{set PlayerHP 100}}` - Create or modify the `PlayerHP` variable and set its value to `100`, it can be a number or a text.
     - **`{{get VAR_NAME}}`**: `{{get PlayerHP}}` -> `100` - Injects `PlayerHP` variable value or text.
     - **`{{wipe}}`**: This will CLEAR the entire array of variables for chat, each chat has its own unique array.
-6. **Logic MACRO keys:**
+6. **Logic:**
     - **`{{math EXPRESSION}}`**: `You have {{math {{get PlayerGold}} + 5}} gold left` -> `You have 15 gold left` - Math functions + - * / (), will remove any text inside the key.
     - **`{{if VALUE COND VALUE ? IF_TRUE:IF_FALSE}}`**: `Is five more than three? Oracle: {{if 5 > 3 ? Yes:No}}` -> `Is five more than three? Oracle: Yes` - Classic IF functions, it can be a number or a text.
         - `>=` - Greater than or equal.
