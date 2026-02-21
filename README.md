@@ -118,7 +118,7 @@ Inspired by SillyTavern's macro system, this engine allows macros / functions ex
     }}
     
     {{if {{get CanAfford}} = 0 
-           ? "No enough money" 
+           ? "Not enough money" 
            : {{if {{get AddedFlag}} = 0 
                ? "No empty slots" 
                : {{get FeedbackText}}
