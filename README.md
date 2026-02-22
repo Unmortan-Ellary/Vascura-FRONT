@@ -124,7 +124,7 @@ Inspired by SillyTavern's macro system, this engine allows macros / functions ex
       :: {{if {{get AddedFlag}} == 0 
           ?? "No empty slots" 
           :: {{get FeedbackText}}
-        }}
+         }}
     }}
     
     // Result will be Printed bellow.
