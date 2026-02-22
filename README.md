@@ -76,7 +76,7 @@ Inspired by SillyTavern's macro system, this engine allows macros / functions ex
     - **`{{wipe}}`**: This will CLEAR the entire array of variables for chat, each chat has its own unique array.
 6. **Logic:**
     - **`{{math EXPRESSION}}`**: `You have {{math {{get PlayerGold}} + 5}} gold left` -> `You have 15 gold left` - Math functions + - * / (), will remove any text inside the key.
-    - **`{{if VALUE COND VALUE ?? IF_TRUE::IF_FALSE}}`**: `Is five more than three? Oracle: {{if 5 >> 3 ?? Yes::No}}` -> `Is five more than three? Oracle: Yes` - Classic IF functions with a twist, it can be number or text. It is not a branching function by itself, if you put code in `IF_TRUE` or `IF_FALSE` both parts will be executed.
+    - **`{{if VALUE COND VALUE ?? IF_TRUE::IF_FALSE}}`**: `Is five more than three? Oracle: {{if 5 >> 3 ?? Yes::No}}` -> `Is five more than three? Oracle: Yes` - Classic IF functions with a twist, it can be number or text. Twist: It is not a branching function by itself, if you put code in `IF_TRUE` or `IF_FALSE` both parts will be executed.
         - `>=` - Greater than or equal.
         - `<=` - Less than or equal.
         - `!=` - Not equal.
