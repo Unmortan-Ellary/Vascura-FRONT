@@ -4,9 +4,9 @@ https://github.com/user-attachments/assets/e0d3f51d-e8ca-4f71-b9f4-cdcd587f82e5
 ### Frontend's Core Ideas:
 - **On-the-Spot Text Editing:** Fast and precise control over editing and altering text.
 - **Dependency-Free:** No downloads, no Python, no Node.js - just a single compact (500~ kb) HTML file that runs in your browser.
-- **Focused:** Only essential tools and features that serve the main concept.
 - **Context-Effective Web Search:** Should find info and links and fit in 4096 tokens limit.
-- **Macro Engine:** Built-in macro scripting, easily triggered by LLM context parsing.
+- **Advanced Lorebook:** Dynamically injects text, macro scripts, images.
+- **Macro Engine:** Built-in macro scripting, easily triggered by system prompt parsing.
 - **OpenAI-compatible API:** The most widely supported standard, chat-completion format.
 - **Open Source:** under the Apache 2.0 License.
 
@@ -46,8 +46,8 @@ By default, the frontend is configured for an easy start with LM Studio: just tu
 9. **Thinking Models Support:**
 Supports thinking models that use `<think></think>` tags or if your endpoint returns only the final answer (without a thinking step), enable the "Thinking Model" switch to activate compatibility mode - this ensures Web Search and other features work correctly.
 
-10. **Lorebook:**
-Use the Lorebook System to create text entries and dynamically inject them into the System Prompt as internal LLM memory. Injection is triggered by custom tags detected in the last messages. Images also will be injected into chat, parameter "Messages to Scan" controls how often same image will be injected: if "Messages to Scan" = 5 then once per 5 messages.
+10. **Advanced Lorebook:**
+Use Lorebook System to create text entries, macro scripts and dynamically inject them into the System Prompt as internal LLM memory. Injection is triggered by custom tags detected in the last messages. Images also will be injected into chat, parameter "Messages to Scan" controls how often same image will be injected: if "Messages to Scan" = 5 then once per 5 messages.
 
 11. **LLM Initiative:**
 Timer based system that force LLM to take Initiative and start new conversations to engage with the user (even with empty chats), messaging multiple times in a row trying to engage with AFK user on its own, continue to perform given task, acting as different characters each new message (if instructed). Will use Lorebook injections, can use Web Search to find fresh information about last topic of conversation.
