@@ -6,7 +6,7 @@ https://github.com/user-attachments/assets/e0d3f51d-e8ca-4f71-b9f4-cdcd587f82e5
 - **Dependency-Free:** No downloads, no Python, no Node.js - just a single compact (500~ kb) HTML file that runs in your browser.
 - **Context-Effective Web Search:** Should find info and links and fit in 4096 tokens limit.
 - **Lorebook:** Dynamically injects text, macro scripts, images.
-- **Macro Engine:** Built-in macro scripting, easily triggered by system prompt parsing.
+- **Macro Engine:** Built-in macro scripting language.
 - **OpenAI-compatible API:** The most widely supported standard, chat-completion format.
 - **Open Source:** under the Apache 2.0 License.
 
