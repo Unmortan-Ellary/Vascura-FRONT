@@ -84,7 +84,7 @@ Inspired by SillyTavern's macro engine, this engine allows macros / scripts exec
         - `<<` - Less than.
         - `includes` - String contains check, `{{if "Is this dress red" includes "red" ?? Yes::No}}` -> `Yes`.
 7. **Samplers:**
-   - **`{{sampler SAMPLER_NAME VALUE}}`**: `{{sampler presence_penalty 1.5}}` - Overrides existing sampler parameter like `temperature` or adds new one supported by Endpoint, for example `presence_penalty` have no dedicated slider, but it can be used just by adding `{{sampler presence_penalty 1.5}}` to System Prompt or Lorebook. You can create full sampling presets in Lorebook and then switch between them by pinning the right Lorebook entry, randomize any sampler using `{{sampler temperature 0.{{roll 1d9}}}}`. VALUE can be a number, false\true or text. LlamaCpp supported ([samplers names](https://github.com/ggml-org/llama.cpp/tree/master/tools/server#api-endpoints)).
+   - **`{{sampler SAMPLER_NAME VALUE}}`**: `{{sampler presence_penalty 1.5}}` - Overrides existing sampler parameter like `temperature` or adds new one supported by Endpoint, for example `presence_penalty` have no dedicated slider, but it can be used just by adding `{{sampler presence_penalty 1.5}}` to System Prompt or Lorebook. You can create full sampling presets in Lorebook and then switch between them by pinning the right Lorebook entry, randomize any sampler using `{{sampler temperature 0.{{roll 1d9}}}}`. VALUE can be a number, false\true or text. LlamaCpp supported [samplers names](https://github.com/ggml-org/llama.cpp/tree/master/tools/server#api-endpoints).
 8. **Nesting and Syntax Example:**
     ```
     {{ // Everything that is between empty {{}} will be deleted, use this to clean newlines, comments etc.
