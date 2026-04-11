@@ -3,8 +3,8 @@
 
 ## Pros.
 - All mods follow the same usage logic.
-- No thinking by default, for faster answers on easy tasks.
-- Faster Web Search agents phases without thinking, since it is a simple sum task.
+- No thinking by default, faster answers on easy tasks.
+- Faster Web Search phases without thinking, since it is a simple sum task.
 - Simple `thinking` phase activation just by adding `/think` anywhere in the System Prompt, by hand or by Lorebook script.
 
 ## How to use.
