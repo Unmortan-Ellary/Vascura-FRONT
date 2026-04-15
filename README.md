@@ -47,7 +47,7 @@ By default, the frontend is configured for an easy start with LM Studio: just tu
 Supports thinking models that use `<think></think>` tags or if your endpoint returns only the final answer (without a thinking step), enable the "Thinking Model" switch to activate compatibility mode - this ensures Web Search and other features work correctly.
 
 10. **Lorebook:**
-Use Lorebook System to create text entries, macro scripts and dynamically inject them into the System Prompt as internal LLM memory. Injection is triggered by custom tags detected in the last messages. Images also will be injected into chat, parameter "Messages to Scan" controls how often same image will be injected: if "Messages to Scan" = 5 then once per 5 messages.
+Use Lorebook System to create text entries (with macro scripts) and dynamically inject them into the System Prompt as internal LLM memory. Injection is triggered by custom tags detected in the last messages. Images also will be injected into chat, parameter "Messages to Scan" controls how often same image will be injected: if "Messages to Scan" = 5 then once per 5 messages.
 
 11. **LLM Initiative:**
 Timer based system that force LLM to take Initiative and start new conversations to engage with the user (even with empty chats), messaging multiple times in a row trying to engage with AFK user on its own, continue to perform given task, acting as different characters each new message (if instructed). Will use Lorebook injections, can use Web Search to find fresh information about last topic of conversation.
