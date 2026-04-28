@@ -67,7 +67,7 @@ Inspired by SillyTavern's macro engine, this engine allows macros / scripts exec
 3. **Injections:**
     - **`{{lore ENTRY_NAME}}`**: `You found a Book about Red Dragons: {{lore Red Dragon}}` -> `You found a Book about Red Dragons: Red dragons are ancient...` - Will search Lorebook for Entry Name (Red Dragon) and injects its Entry Prompt along with image, not-case sensitive. If added Lorebook Entry have MACRO keys inside it - those keys also be processed. This MACRO have high priority and will work even if Lorebook is disabled.
     - **`{{image ENTRY_NAME}}`**: `Red Dragon spreads its wings and takes to the air. {{image Red Dragon Flying}}` -> `Red Dragon spreads its wings and takes to the air.` - Image from Lorebook Entry (Red Dragon Flying) will appear in the chat bellow the last USER message.
-    - **`{{anote TEXT}}`**: `{{anote - Think like Dragon.}}` - Temporary adds `- Think like Dragon.` to the end of the LAST User Message with newline, works similar to classic Author's Note.
+    - **`{{anote TEXT}}`**: `{{anote - Think like Dragon.}}` - Temporary adds `- Think like Dragon.` to the end of the last USER Message with newline, works similar to classic Author's Note.
 4. **Randoms**:
     - **`{{roll NdN}}`**: `The Dragon hits you on {{roll 2d6}} HP` -> `The Dragon hits you on 8 HP` - Random Dice Roll function, can generate any kind of rolls that follows NdN loggic: 1d6, 2d10, 3d20. Can be used as simple random number generator: 1d1000 etc.
     - **`{{pick A|B|C}}`**: `You better choose {{pick right|left|middle}} section` -> `You better choose right section` - Random Choice out of 2+ Options.
