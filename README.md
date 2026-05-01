@@ -42,7 +42,7 @@ Uses Markdown syntax to apply color patterns to your text.
 Each chat is an independent workspace. Everything you move or change is saved instantly. When you reload the backend or switch chats, you’ll return to the exact same setup you left, except for the chat scroll position. Supports custom avatars for your chats.
 
 8. **Pre-Configured for LM Studio:**
-By default, the frontend is configured for an easy start with LM Studio: just turn `"Enable CORS"` to ON, in LM Studio server settings, enable the server in LM Studio, choose your model, launch Vascura FRONT, and say “Hi!” - that’s it!
+By default, frontend is configured for an easy start with LM Studio: just turn `"Enable CORS"` to ON, in LM Studio server settings, enable the server in LM Studio, choose your model, launch Vascura FRONT, and say “Hi!” - that’s it!
 
 9. **Thinking Models Support:**
 Supports thinking models that use `<think></think>` tags or if your endpoint returns only the final answer (without a thinking step), enable the "Thinking Model" switch to activate compatibility mode - this ensures Web Search and other features work correctly.
