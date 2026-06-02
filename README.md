@@ -12,7 +12,7 @@ https://github.com/user-attachments/assets/e0d3f51d-e8ca-4f71-b9f4-cdcd587f82e5
 - **Open Source:** under the Apache 2.0 License.
 
 ### What's new?
-- Character Cards (Chub.AI, SillyTavern etc) Support via `Vascura - Card Inspector` Tool.
+- Character Cards (Chub.AI, SillyTavern, V1-V2-V3 etc) Support via `Vascura - Card Inspector` Tool.
 - New Macros {{anote}}, {{sampler}}.
 - Lorebook Image System.
 
