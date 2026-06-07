@@ -58,7 +58,7 @@ Inspired by SillyTavern's macro engine, this engine allows macros / scripts exec
 
 ### Tools:
 - [Vascura - Card Inspector](https://github.com/Unmortan-Ellary/Vascura-FRONT/blob/main/Tools/Vascura%20-%20Card%20Inspector%20v0.405.html): A Reader \ Converter Tool for Characters Cards (V1-V2-V3 Chub.AI etc). Vascura FRONT can imitate work of `SillyTavern` or `Serene Pub` using its Lorebook System and Marco Engine (for single card), but first CHARA Card need to be converted into the right format (Lorebook Card) - this Tool do exactly that. You can inspect any CHARA card and EXPORT it for Vascura FRONT with different options. Also supports native Lorebook JSONs from Vascura FRONT.
-<img width="998" height="613" alt="2brave_screenshot" src="https://github.com/user-attachments/assets/d68620de-2954-4845-89ce-cd54fd8d8e61"/>
+     <img width="998" height="613" alt="2brave_screenshot" src="https://github.com/user-attachments/assets/d68620de-2954-4845-89ce-cd54fd8d8e61"/>
 
 
 ### Macro Engine Guide:
