@@ -104,27 +104,27 @@ Inspired by SillyTavern's macro engine, this engine allows macros / scripts exec
         - `seed` - Set the random number generator (RNG) seed. Default: `-1`, which is a random seed.
         - `ignore_eos` - Ignore end of stream token and continue generating. Default: `false`.
         
-| Parameter | Description | Default |
-| :--- | :--- | :--- |
-| `temperature` | Adjust the randomness of the generated text. | `0.8` |
-| `dynatemp_range` | Dynamic temperature range. | `0.0` (disabled) |
-| `dynatemp_exponent` | Dynamic temperature exponent. | `1.0` |
-| `top_k` | Limit the next token selection to the K most probable tokens. | `40` |
-| `top_p` | Limit the next token selection to a subset of tokens with a cumulative probability above a threshold P. | `0.95` |
-| `min_p` | The minimum probability for a token to be considered, relative to the probability of the most likely token. | `0.05` |
-| `n_predict` | Set the maximum number of tokens to predict when generating text. | `-1` (infinity) |
-| `typical_p` | Enable locally typical sampling with parameter p. | `1.0` (disabled) |
-| `repeat_penalty` | Control the repetition of token sequences in the generated text. | `1.1` |
-| `presence_penalty` | Repeat alpha presence penalty. | `0.0` (disabled) |
-| `frequency_penalty` | Repeat alpha frequency penalty. | `0.0` (disabled) |
-| `dry_multiplier` | Set the DRY (Don't Repeat Yourself) repetition penalty multiplier. | `0.0` (disabled) |
-| `dry_base` | *(Not specified in source)* | `1.75` |
-| `dry_allowed_length` | *(Not specified in source)* | `2` |
-| `dry_penalty_last_n` | *(Not specified in source)* | `-1` (`0` is disabled) |
-| `xtc_probability` | Set the chance for token removal via XTC sampler. | `0.0` (disabled) |
-| `xtc_threshold` | Set a minimum probability threshold for tokens to be removed via XTC sampler. | `0.1` (> `0.5` disables XTC) |
-| `seed` | Set the random number generator (RNG) seed. | `-1` (random seed) |
-| `ignore_eos` | Ignore end of stream token and continue generating. | `false` |
+        | Parameter | Description | Default |
+        | :--- | :--- | :--- |
+        | `temperature` | Adjust the randomness of the generated text. | `0.8` |
+        | `dynatemp_range` | Dynamic temperature range. | `0.0` (disabled) |
+        | `dynatemp_exponent` | Dynamic temperature exponent. | `1.0` |
+        | `top_k` | Limit the next token selection to the K most probable tokens. | `40` |
+        | `top_p` | Limit the next token selection to a subset of tokens with a cumulative probability above a threshold P. | `0.95` |
+        | `min_p` | The minimum probability for a token to be considered, relative to the probability of the most likely token. | `0.05` |
+        | `n_predict` | Set the maximum number of tokens to predict when generating text. | `-1` (infinity) |
+        | `typical_p` | Enable locally typical sampling with parameter p. | `1.0` (disabled) |
+        | `repeat_penalty` | Control the repetition of token sequences in the generated text. | `1.1` |
+        | `presence_penalty` | Repeat alpha presence penalty. | `0.0` (disabled) |
+        | `frequency_penalty` | Repeat alpha frequency penalty. | `0.0` (disabled) |
+        | `dry_multiplier` | Set the DRY (Don't Repeat Yourself) repetition penalty multiplier. | `0.0` (disabled) |
+        | `dry_base` | *(Not specified in source)* | `1.75` |
+        | `dry_allowed_length` | *(Not specified in source)* | `2` |
+        | `dry_penalty_last_n` | *(Not specified in source)* | `-1` (`0` is disabled) |
+        | `xtc_probability` | Set the chance for token removal via XTC sampler. | `0.0` (disabled) |
+        | `xtc_threshold` | Set a minimum probability threshold for tokens to be removed via XTC sampler. | `0.1` (> `0.5` disables XTC) |
+        | `seed` | Set the random number generator (RNG) seed. | `-1` (random seed) |
+        | `ignore_eos` | Ignore end of stream token and continue generating. | `false` |
         
 8. **Nesting and Syntax Example:**
     ```
