@@ -12,7 +12,7 @@ https://github.com/user-attachments/assets/e0d3f51d-e8ca-4f71-b9f4-cdcd587f82e5
 - **Open Source:** under the Apache 2.0 License.
 
 ### What's new?
-- Character Cards Support (Chub.AI etc) via `Vascura - Card Inspector` Tool.
+- Characters Cards Support (Chub.AI etc) via `Vascura - Card Inspector` Tool.
 - New Macros {{anote}}, {{sampler}}.
 - Lorebook Image System.
 
@@ -48,13 +48,16 @@ By default, frontend is configured for an easy start with LM Studio: just turn `
 Supports thinking models that use `<think></think>` tags or if your endpoint returns only the final answer (without a thinking step), enable the "Thinking Model" switch to activate compatibility mode - this ensures Web Search and other features work correctly.
 
 10. **Lorebook:**
-Use Lorebook System to create text entries (with macro scripts support) and dynamically inject them into the System Prompt as internal LLM memory. Injection is triggered by custom tags detected in the last messages. Images also will be injected into chat, parameter "Messages to Scan" controls how often same image will be injected: if "Messages to Scan" = 5 then once per 5 messages.
+Use Lorebook System to create text entries (with macro scripts support) and dynamically inject them into the System Prompt as internal LLM memory. Injection is triggered by custom tags detected in the last messages. Images also will be injected into chat, parameter "Messages to Scan" controls how often same image will be injected.
 
 11. **LLM Initiative:**
 Timer based system that force LLM to take Initiative and start new conversations to engage with the user (even with empty chats), messaging multiple times in a row trying to engage with AFK user on its own, continue to perform given task, acting as different characters each new message (if instructed). Will use Lorebook injections, can use Web Search to find fresh information about last topic of conversation.
 
 12. **Macro Engine:**
 Inspired by SillyTavern's macro engine, this engine allows macros / scripts execution by parsing System Prompt + Lorebook Entries. Example: `Current Date is {{date}}, Time is {{time}}, Today is {{weekday}}, User Language is {{language}}, User will drink {{pick Tea|Milk|Coffee}}, User's happy number for today is {{roll 1d100}}, Favorite songs: {{lore My Favorite Songs List}}, Random Math: {{math {{roll 1d20}} + (5 + 2)}}.` for LLM this text in System Prompt will be converted to `Current Date is 2023-10-27, Time is 12:30, Today is Friday, User Language is en-US, User will drink Milk, User's happy number for today is 78, Favorite songs: My Top 10..., Random Math: 25.` Please read the Macro Engine Guide for more info about each macro.
+
+### Tools:
+- [Vascura - Card Inspector](https://github.com/Unmortan-Ellary/Vascura-FRONT/blob/main/Tools/Vascura%20-%20Card%20Inspector%20v0.405.html): A Reader \ Converter Tool for Characters Cards (V1-V2-V3 Chub.AI etc). Vascura FRONT can imitate work of `SillyTavern` or `Serene Pub` using its Lorebook System and Marco Engine (for single card), but first Cards need to be converted into the right format (Lorebook Card) - this Tool do exactly that. You can inspect any CHARA card and EXPORT it for Vascura FRONT with different options. Also supports native Lorebook JSONs from Vascura FRONT.
 
 ### Macro Engine Guide:
 1. **How it Works:** Right now Macro Engine parse only the final System Prompt (System Prompt + Lorebook Entries). So please use Macro keys in Lorebook and System Prompt, they will not work anywhere else. Engine will search for Macro keys like `{{time}}` execute its function and replace it with the result data `14:30`. A temporal processed System Prompt will be created and pushed to LLM, not affecting the permanent System Prompt or Lorebook, so everything will be recalculated every time message is sent to LLM. Keys are not-case sensitive and can be used as `{{time}}`, `{{TIME}}`, `{{Time}}` etc. Engine supports nesting - Macro in Macro, nested most inner Macros will be executed first.
