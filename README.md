@@ -92,24 +92,7 @@ Inspired by SillyTavern's macro engine, this engine allows macros / scripts exec
         - `includes` - String contains check, `{{if "Is this dress red" includes "red" ?? Yes::No}}` -> `Yes`.
 7. **Samplers:**
    - **`{{sampler SAMPLER_NAME VALUE}}`**: `{{sampler temperature 0.2}}` - Temporary overrides existing sampler with different value (`temperature` from 1.0 to 0.2) or adds totally new one supported by Endpoint, for example `presence_penalty` have no dedicated slider, but it can be used just by adding `{{sampler presence_penalty 1.5}}` to System Prompt or Lorebook. You can create sampling presets in Lorebook and then fast-switch between them by pinning the right Lorebook entry. You can randomize any sampler using `{{sampler temperature 0.{{roll 1d9}}}}`. VALUE can be a number, false\true or text. All LlamaCpp supported [samplers](https://github.com/ggml-org/llama.cpp/tree/master/tools/server#api-endpoints).
-        - Core Samplers: `temperature`, `top_k`, `top_p`, `min_p`, `typical_p`, `repeat_penalty`, `presence_penalty`, `frequency_penalty`, `xtc_probability`, `xtc_threshold`, `dry_multiplier`, `dry_base`, `dry_allowed_length`, `dry_penalty_last_n`, `n_predict`, `seed`, `ignore_eos`.
-        ```
-        - `temperature` - Adjust the randomness of the generated text. Default: `0.8`.
-        - `top_k` - Limit the next token selection to the K most probable tokens. Default: `40`.
-        - `top_p` - Limit the next token selection to a subset of tokens with a cumulative probability above a threshold P. Default: `0.95`.
-        - `min_p` - The minimum probability for a token to be considered, relative to the probability of the most likely token. Default: `0.05`.
-        - `n_predict` - Set the maximum number of tokens to predict when generating text. Default: `-1`, where `-1` is infinity.
-        - `typical_p` - Enable locally typical sampling with parameter p. Default: `1.0`, which is disabled.
-        - `repeat_penalty` - Control the repetition of token sequences in the generated text. Default: `1.1`.
-        - `presence_penalty` - Repeat alpha presence penalty. Default: `0.0`, which is disabled.
-        - `frequency_penalty` - Repeat alpha frequency penalty. Default: `0.0`, which is disabled.
-        - `dry_multiplier` - Set the DRY (Don't Repeat Yourself) repetition penalty multiplier. Default: `0.0`, which is disabled.
-        - `dry_base` - Default: `1.75`, `dry_allowed_length` - Default: `2`, `dry_penalty_last_n` - Default: `-1`, where `0` is disabled.
-        - `xtc_probability` - Set the chance for token removal via XTC sampler. Default: `0.0`, which is disabled.
-        - `xtc_threshold` - Set a minimum probability threshold for tokens to be removed via XTC sampler. Default: `0.1` (> `0.5` disables XTC).
-        - `seed` - Set the random number generator (RNG) seed. Default: `-1`, which is a random seed.
-        - `ignore_eos` - Ignore end of stream token and continue generating. Default: `false`.
-        ```
+        - Core Samplers: `temperature`, `top_k`, `top_p`, `min_p`, `typical_p`, `repeat_penalty`, `presence_penalty`, `frequency_penalty`, `xtc_probability`, `xtc_threshold`, `dry_multiplier`, `dry_base`, `dry_allowed_length`, `dry_penalty_last_n`, `dynatemp_range`, `dynatemp_exponent`, `n_predict`, `seed`, `ignore_eos`, etc.
         
 8. **Nesting and Syntax Example:**
     ```
