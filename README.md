@@ -87,6 +87,23 @@ Inspired by SillyTavern's macro engine, this engine allows macros / scripts exec
         - `includes` - String contains check, `{{if "Is this dress red" includes "red" ?? Yes::No}}` -> `Yes`.
 7. **Samplers:**
    - **`{{sampler SAMPLER_NAME VALUE}}`**: `{{sampler temperature 0.2}}` - Temporary overrides existing sampler with different value (`temperature` from 1.0 to 0.2) or adds totally new one supported by Endpoint, for example `presence_penalty` have no dedicated slider, but it can be used just by adding `{{sampler presence_penalty 1.5}}` to System Prompt or Lorebook. You can create sampling presets in Lorebook and then fast-switch between them by pinning the right Lorebook entry. You can randomize any sampler using `{{sampler temperature 0.{{roll 1d9}}}}`. VALUE can be a number, false\true or text. All LlamaCpp supported [samplers](https://github.com/ggml-org/llama.cpp/tree/master/tools/server#api-endpoints).
+        - `temperature` - Default: `0.8`.
+        - `top_k` - Default: `40`.
+        - `top_p` - Default: `0.95`.
+        - `min_p` - Default: `0.05`.
+        - `n_predict` - Default: `-1`, where `-1` is infinity.
+        - `typical_p` - Default: `1.0`, which is disabled.
+        - `repeat_penalty` - Default: `1.1`.
+        - `presence_penalty` - Default: `0.0`, which is disabled.
+        - `frequency_penalty` - Default: `0.0`, which is disabled.
+        - `dry_multiplier` - Default: `0.0`, which is disabled.
+        - `dry_base` - Default: `1.75`. 
+        - `dry_allowed_length` - Default: `2`.
+        - `dry_penalty_last_n` - Default: `-1`, where `0` is disabled.
+        - `xtc_probability` - Default: `0.0`, which is disabled.
+        - `xtc_threshold` - Default: `0.1` (> `0.5` disables XTC).
+        - `seed` - Default: `-1`, which is a random seed.
+        - `ignore_eos` - Default: `false`.
         ```
         - `temperature` - Adjust the randomness of the generated text. Default: `0.8`.
         - `dynatemp_range` - Dynamic temperature range. Default: `0.0`, which is disabled, `dynatemp_exponent` - Dynamic temperature exponent. Default: `1.0`.
