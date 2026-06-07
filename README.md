@@ -87,6 +87,21 @@ Inspired by SillyTavern's macro engine, this engine allows macros / scripts exec
         - `includes` - String contains check, `{{if "Is this dress red" includes "red" ?? Yes::No}}` -> `Yes`.
 7. **Samplers:**
    - **`{{sampler SAMPLER_NAME VALUE}}`**: `{{sampler temperature 0.2}}` - Temporary overrides existing sampler with different value (`temperature` from 1.0 to 0.2) or adds totally new one supported by Endpoint, for example `presence_penalty` have no dedicated slider, but it can be used just by adding `{{sampler presence_penalty 1.5}}` to System Prompt or Lorebook. You can create complete sampling presets in Lorebook and then switch between them by pinning the right Lorebook entry. You can randomize any sampler using `{{sampler temperature 0.{{roll 1d9}}}}`. VALUE can be a number, false\true or text. LlamaCpp supported [samplers names](https://github.com/ggml-org/llama.cpp/tree/master/tools/server#api-endpoints).
+        <details>
+        <summary>Core Samplers</summary>
+        - `temperature` - Adjust the randomness of the generated text. Default: `0.8`.
+        - `top_k` - Limit the next token selection to the K most probable tokens. Default: `40`.
+        - `top_p` - Limit the next token selection to a subset of tokens with a cumulative probability above a threshold P. Default: `0.95`.
+        - `min_p` - The minimum probability for a token to be considered, relative to the probability of the most likely token. Default: `0.05`.
+        - `n_predict` - Set the maximum number of tokens to predict when generating text. Default: `-1`, where `-1` is infinity.
+        - `typical_p` - Enable locally typical sampling with parameter p. Default: `1.0`, which is disabled.
+        - `repeat_penalty` - Control the repetition of token sequences in the generated text. Default: `1.1`.
+        - `presence_penalty` - Repeat alpha presence penalty. Default: `0.0`, which is disabled.
+        - `frequency_penalty` - Repeat alpha frequency penalty. Default: `0.0`, which is disabled.
+        - `dry_multiplier` - Set the DRY (Don't Repeat Yourself) repetition penalty multiplier. Default: `0.0`, which is disabled.
+        - `dry_base` - Set the DRY repetition penalty base value. Default: `1.75`.
+        - `dry_allowed_length` - Default: `2`.
+        </details>
 8. **Nesting and Syntax Example:**
     ```
     {{ // Everything that is between empty {{}} will be deleted, use this to clean newlines, comments etc.
