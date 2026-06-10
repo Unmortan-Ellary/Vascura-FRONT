@@ -14,7 +14,7 @@ https://github.com/user-attachments/assets/e0d3f51d-e8ca-4f71-b9f4-cdcd587f82e5
 ### What's new?
 - `First Message` insertion from Lorebook on Chat Reset.
 - New `Backfill Mode` for LLM Initiative.
-- New Macro `{{kwarg}}` that control "chat_template_kwargs" parameters.
+- New Macro `{{kwarg}}` that controls "chat_template_kwargs" parameters.
 - Character Cards Support (Chub.AI etc) via `Vascura - Card Inspector` Tool.
 
 ### Features: 
