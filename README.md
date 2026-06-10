@@ -12,9 +12,10 @@ https://github.com/user-attachments/assets/e0d3f51d-e8ca-4f71-b9f4-cdcd587f82e5
 - **Open Source:** under the Apache 2.0 License.
 
 ### What's new?
+- `First Message` insertion from Lorebook on Chat Reset.
+- New `Backfill Mode` for LLM Initiative.
+- New Macro {{kwarg}} that control "chat_template_kwargs" parameters.
 - Character Cards Support (Chub.AI etc) via `Vascura - Card Inspector` Tool.
-- New Macros {{anote}}, {{sampler}}.
-- Lorebook Image System.
 
 ### Features: 
 
@@ -48,10 +49,10 @@ By default, frontend is configured for an easy start with LM Studio: just turn `
 Supports thinking models that use `<think></think>` tags or if your endpoint returns only the final answer (without a thinking step), enable the "Thinking Model" switch to activate compatibility mode - this ensures Web Search and other features work correctly.
 
 10. **Lorebook:**
-Use Lorebook System to create text entries (with macro scripts support) and dynamically inject them into the System Prompt as internal LLM memory. Injection is triggered by custom tags detected in the last messages. Images also will be injected into chat, parameter "Messages to Scan" controls how often same image will be injected.
+Use Lorebook System to create text entries (with macro scripts support) and dynamically inject them into the System Prompt as internal LLM memory. Injection is triggered by custom tags detected in the last messages. **Lorebook Image System:** Images also will be injected into chat, parameter "Messages to Scan" controls how often same image will be injected.
 
 11. **LLM Initiative:**
-Timer based system that force LLM to take Initiative and start new conversations to engage with the user (even with empty chats), messaging multiple times in a row trying to engage with AFK user on its own, continue to perform given task, acting as different characters each new message (if instructed). Will use Lorebook injections, can use Web Search to find fresh information about last topic of conversation.
+Timer based system that force LLM to take Initiative and start new conversations to engage with the user (even with empty chats), messaging multiple times in a row trying to engage with AFK user on its own, continue to perform given task, acting as different characters each new message (if instructed). Will use Lorebook injections, can use Web Search to find fresh information about last topic of conversation. **Backfill Mode:** TODO.
 
 12. **Macro Engine:**
 Inspired by SillyTavern's macro engine, this engine allows macros / scripts execution by parsing System Prompt + Lorebook Entries. Example: `Current Date is {{date}}, Time is {{time}}, Today is {{weekday}}, User Language is {{language}}, User will drink {{pick Tea|Milk|Coffee}}, User's happy number for today is {{roll 1d100}}, Favorite songs: {{lore My Favorite Songs List}}, Random Math: {{math {{roll 1d20}} + (5 + 2)}}.` for LLM this text in System Prompt will be converted to `Current Date is 2023-10-27, Time is 12:30, Today is Friday, User Language is en-US, User will drink Milk, User's happy number for today is 78, Favorite songs: My Top 10..., Random Math: 25.` Please read the [Macro Engine Guide](https://github.com/Unmortan-Ellary/Vascura-FRONT/tree/main#macro-engine-guide) for more info about each macro.
@@ -91,10 +92,11 @@ Inspired by SillyTavern's macro engine, this engine allows macros / scripts exec
         - `<<` - Less than.
         - `includes` - String contains check, `{{if "Is this dress red" includes "red" ?? Yes::No}}` -> `Yes`.
 7. **Samplers:**
+   - **`{{kwarg KWARG_NAME VALUE}}`**: `{{kwarg enable_thinking false}}` - TODO.
    - **`{{sampler SAMPLER_NAME VALUE}}`**: `{{sampler temperature 0.2}}` - Temporary overrides existing sampler with different value (`temperature` from 1.0 to 0.2) or adds totally new one supported by Endpoint, for example `presence_penalty` have no dedicated slider, but it can be used just by adding `{{sampler presence_penalty 1.5}}` to System Prompt or Lorebook. You can create sampling presets in Lorebook and then fast-switch between them by pinning the right Lorebook entry. You can randomize any sampler using `{{sampler temperature 0.{{roll 1d9}}}}`. VALUE can be a number, false\true or text. All LlamaCpp supported [samplers](https://github.com/ggml-org/llama.cpp/tree/master/tools/server#api-endpoints).
         - Core Samplers: `temperature`, `top_k`, `top_p`, `min_p`, `typical_p`, `repeat_penalty`, `presence_penalty`, `frequency_penalty`, `xtc_probability`, `xtc_threshold`, `dry_multiplier`, `dry_base`, `dry_allowed_length`, `dry_penalty_last_n`, `dynatemp_range`, `dynatemp_exponent`, `n_predict`, `seed`, `ignore_eos`, etc.
         
-8. **Nesting and Syntax Example:**
+9. **Nesting and Syntax Example:**
     ```
     {{ // Everything that is between empty {{}} will be deleted, use this to clean newlines, comments etc.
        - This code checks that player has 300 Gold to buy a Sword.
