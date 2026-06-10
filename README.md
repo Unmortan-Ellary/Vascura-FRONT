@@ -3,7 +3,7 @@ https://github.com/user-attachments/assets/e0d3f51d-e8ca-4f71-b9f4-cdcd587f82e5
 
 ### Frontend's Core Ideas:
 - **Simplicity:** Easy to understand interface, curated features with "less is more" ideology.
-- **Dependency-Free:** No downloads, no Python, no Node.js - just a single compact (400~ kb) HTML file that runs in your browser.
+- **Dependency-Free:** No downloads, no Python, no Node.js - just a single compact (450~ kb) HTML file that runs in your browser.
 - **On-the-Spot Text Editing:** Fast and precise control over editing and altering text.
 - **Context-Effective Web Search:** Should find info and links and fit in 4096 tokens limit.
 - **Lorebook:** Dynamically injects text, macro scripts, images.
