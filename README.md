@@ -19,8 +19,6 @@ https://github.com/user-attachments/assets/e0d3f51d-e8ca-4f71-b9f4-cdcd587f82e5
 
 ### Features: 
 
-Please watch the video for a visual demonstration of the implemented features.
-
 1. **On-the-Spot Text Editing:**
 Edit text just like in a plain notepad, no restrictions, no intermediate steps. Just click and type.
 
