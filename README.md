@@ -63,27 +63,25 @@ Inspired by SillyTavern's macro engine, this engine allows macros / scripts exec
 ### Macro Engine Guide:
 1. **How it Works:** Right now Macro Engine parse only the final System Prompt (System Prompt + Lorebook Entries). So please use Macro keys in Lorebook and System Prompt, they will not work anywhere else. Engine will search for Macro keys like `{{time}}` execute its function and replace it with result data `14:30`. A temporal processed System Prompt will be created and pushed to LLM, not affecting the permanent System Prompt or Lorebook, so everything will be recalculated every time message is sent to LLM. Keys are not-case sensitive and can be used as `{{time}}`, `{{TIME}}`, `{{Time}}` etc. Engine supports nesting - Macro in Macro, nested most inner Macros will be executed first.
      
-     <img width="871" height="376" alt="image" src="https://github.com/user-attachments/assets/eef10273-f9fe-4232-8569-cded88ca66a7"/>
+     <img width="1001" height="296" alt="image" src="https://github.com/user-attachments/assets/6fe2c524-79a8-4b4c-8199-31531bf55b99"/>
 
-
-
-3. **Simple Data:**
+2. **Simple Data:**
     - **`{{time}}`**: `Local Time is {{time}}` -> `Local Time is 14:30` - Current Time.
     - **`{{date}}`**: `Today date is {{date}}` -> `Today date is 2023-10-27` - Current Date.
     - **`{{weekday}}`**: `Today is {{weekday}}` -> `Today is Friday` - Current Day of the Week.
     - **`{{language}}`**: `User System Language is {{language}}` -> `User System Language is en-US` - Browser Language in a form of `en-US`, `en-GB` etc.
-4. **Injections:**
+3. **Injections:**
     - **`{{lore ENTRY_NAME}}`**: `You found a Book about Red Dragons: {{lore Red Dragon}}` -> `You found a Book about Red Dragons: Red dragons are ancient...` - Will search Lorebook for Entry Name (Red Dragon) and injects its Entry Prompt along with image, not-case sensitive. If added Lorebook Entry have MACRO keys inside it - those keys also be processed. This MACRO have high priority and will work even if Lorebook is disabled.
     - **`{{image ENTRY_NAME}}`**: `Red Dragon spreads its wings and takes to the air. {{image Red Dragon Flying}}` -> `Red Dragon spreads its wings and takes to the air.` - Image from Lorebook Entry (Red Dragon Flying) will appear in the chat bellow the last USER message.
     - **`{{anote TEXT}}`**: `{{anote - Think like Dragon.}}` - Temporary adds `- Think like Dragon.` to the end of the last USER Message with newline, works similar to classic Author's Note.
-5. **Random**:
+4. **Random**:
     - **`{{roll NdN}}`**: `The Dragon hits you on {{roll 2d6}} HP` -> `The Dragon hits you on 8 HP` - Random Dice Roll function, can generate any kind of rolls that follows NdN loggic: 1d6, 2d10, 3d20. Can be used as simple random number generator: 1d1000 etc.
     - **`{{pick A|B|C}}`**: `You better choose {{pick right|left|middle}} section` -> `You better choose right section` - Random Choice out of 2+ Options.
-6. **Variables:**
+5. **Variables:**
     - **`{{set VAR_NAME DATA}}`**: `{{set PlayerHP 100}}` - Create or modify the `PlayerHP` variable and set its value to `100`, it can be number or text.
     - **`{{get VAR_NAME}}`**: `{{get PlayerHP}}` -> `100` - Injects `PlayerHP` variable value or text.
     - **`{{wipe}}`**: This will CLEAR the entire array of variables for chat, each chat has its own unique array.
-7. **Logic:**
+6. **Logic:**
     - **`{{math EXPRESSION}}`**: `You have {{math {{get PlayerGold}} + 5}} gold left` -> `You have 15 gold left` - Math functions + - * / (), will remove any text inside the key.
     - **`{{if VALUE COND VALUE ?? IF_TRUE::IF_FALSE}}`**: `Is five more than three? Oracle: {{if 5 >> 3 ?? Yes::No}}` -> `Is five more than three? Oracle: Yes` - Classic IF functions with a twist, it can be number or text. Twist: It is not a branching function by itself, if you put code in `IF_TRUE` or `IF_FALSE` both parts will be executed.
         - `>=` - Greater than or equal.
@@ -93,13 +91,13 @@ Inspired by SillyTavern's macro engine, this engine allows macros / scripts exec
         - `>>` - Greater than.
         - `<<` - Less than.
         - `includes` - String contains check, `{{if "Is this dress red" includes "red" ?? Yes::No}}` -> `Yes`.
-8. **Samplers:**
+7. **Samplers:**
    - **`{{kwarg KWARG_NAME VALUE}}`**: `{{kwarg enable_thinking false}}` - Adds `"chat_template_kwargs": {"enable_thinking": false}` argument for next message, KWARGs usually used to disable `thinking` of the model or to switch any other parameter. Each single `{{kwarg}}` parameter should have its own macro line, if same `{{kwarg}}` parameter repeated multiple times in the same request, last one will be used.
         - Core KWARGs: `enable_thinking`, `thinking`, `preserve_thinking`, `reasoning_effort`.
    - **`{{sampler SAMPLER_NAME VALUE}}`**: `{{sampler temperature 0.2}}` - Temporary overrides existing sampler with different value (`temperature` from 1.0 to 0.2) or adds totally new one supported by Endpoint, for example `presence_penalty` have no dedicated slider, but it can be used just by adding `{{sampler presence_penalty 1.5}}` to System Prompt or Lorebook. You can create sampling presets in Lorebook and then fast-switch between them by pinning the right Lorebook entry. You can randomize any sampler using `{{sampler temperature 0.{{roll 1d9}}}}`. VALUE can be a number, false\true or text. All LlamaCpp supported [samplers](https://github.com/ggml-org/llama.cpp/tree/master/tools/server#api-endpoints).
         - Core Samplers: `temperature`, `top_k`, `top_p`, `min_p`, `typical_p`, `repeat_penalty`, `presence_penalty`, `frequency_penalty`, `xtc_probability`, `xtc_threshold`, `dry_multiplier`, `dry_base`, `dry_allowed_length`, `dry_penalty_last_n`, `dynatemp_range`, `dynatemp_exponent`, `n_predict`, `seed`, `ignore_eos`, etc.
         
-9. **Nesting and Syntax Example:**
+8. **Nesting and Syntax Example:**
     ```
     {{ // Everything that is between empty {{}} will be deleted, use this to clean newlines, comments etc.
        - This code checks that player has 300 Gold to buy a Sword.
