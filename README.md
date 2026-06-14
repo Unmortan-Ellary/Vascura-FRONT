@@ -62,6 +62,7 @@ Inspired by SillyTavern's macro engine, this engine allows macros / scripts exec
 
 ### Macro Engine Guide:
 1. **How it Works:** Right now Macro Engine parse only the final System Prompt (System Prompt + Lorebook Entries). So please use Macro keys in Lorebook and System Prompt, they will not work anywhere else. Engine will search for Macro keys like `{{time}}` execute its function and replace it with result data `14:30`. A temporal processed System Prompt will be created and pushed to LLM, not affecting the permanent System Prompt or Lorebook, so everything will be recalculated every time message is sent to LLM. Keys are not-case sensitive and can be used as `{{time}}`, `{{TIME}}`, `{{Time}}` etc. Engine supports nesting - Macro in Macro, nested most inner Macros will be executed first.
+     
      <img width="871" height="376" alt="image" src="https://github.com/user-attachments/assets/eef10273-f9fe-4232-8569-cded88ca66a7"/>
 
 
