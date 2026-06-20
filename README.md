@@ -33,8 +33,6 @@ Available when using LM Studio or Llama.cpp Server as backend, this feature prov
 
 5. **Any OpenAI-API-Compatible Backend:**
 Works with any endpoint that implements the OpenAI API - LM Studio, Kobold.CPP, Llama.CPP Server, Oobabooga's Text Generation WebUI, and more. With "Strict API" mode enabled, it also supports Mistral API, OpenRouter API, and other v1-compliant endpoints.
-     <img width="1610" height="492" alt="image" src="https://github.com/user-attachments/assets/6ccab5c1-969f-437a-9610-3d0594c3001d" />
-
 
 6. **Markdown Color Coding:**
 Uses Markdown syntax to apply color patterns to your text.
