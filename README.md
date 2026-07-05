@@ -12,6 +12,7 @@ https://github.com/user-attachments/assets/e0d3f51d-e8ca-4f71-b9f4-cdcd587f82e5
 - **Open Source:** under the Apache 2.0 License.
 
 ### What's new?
+- Duplicate Chat Message function via `ALT` + `Copy` Button.
 - `First Message` from Lorebook on Chat Reset.
 - New `Backfill Mode` for LLM Initiative.
 - New Macro `{{kwarg}}` that controls "chat_template_kwargs" parameters.
@@ -148,7 +149,8 @@ Inspired by SillyTavern's macro engine, this engine allows macros / scripts exec
     ```
 
 ### Hotkeys:
-- `Double-Click on DOTS` - Focus Mode.
+- `ALT+COPY (Message Button)` - Duplicate Chat Message.
+- `ALT+F` or `Double-Click on DOTS` - Focus Mode.
 - `F8` - Lorebook.
 
 ### Useful Links to OpenAI API Compatible Endpoints (free):
