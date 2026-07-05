@@ -149,8 +149,8 @@ Inspired by SillyTavern's macro engine, this engine allows macros / scripts exec
     ```
 
 ### Hotkeys:
-- `ALT+COPY (Message Button)` - Duplicate Chat Message.
-- `ALT+F` or `Double-Click on DOTS` - Focus Mode.
+- `ALT + COPY (Message Button)` - Duplicate Chat Message.
+- `ALT + F` or `Double-Click on DOTS` - Focus Mode.
 - `F8` - Lorebook.
 
 ### Useful Links to OpenAI API Compatible Endpoints (free):
