@@ -12,7 +12,7 @@ https://github.com/user-attachments/assets/e0d3f51d-e8ca-4f71-b9f4-cdcd587f82e5
 - **Open Source:** under the Apache 2.0 License.
 
 ### What's new?
-- New Macro `{{llm}}` allows parallel LLM sub-requests inside Main request.
+- New Macro `{{llm}}` allows to chain LLM Sub-Requests inside Main Request.
 - Duplicate Chat Message function via `ALT` + `Copy` Button.
 - `First Message` from Lorebook on Chat Reset.
 - New Macro `{{kwarg}}` that controls "chat_template_kwargs" parameters.
