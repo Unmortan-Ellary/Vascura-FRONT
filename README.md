@@ -12,7 +12,7 @@ https://github.com/user-attachments/assets/e0d3f51d-e8ca-4f71-b9f4-cdcd587f82e5
 - **Open Source:** under the Apache 2.0 License.
 
 ### What's new?
-- New Macro `{{llm}}` allows to chain LLM Sub-Requests inside Main Request.
+- New Macro `{{llm}}` allows to chain small LLM Sub-Requests.
 - Duplicate Chat Message function via `ALT` + `Copy` Button.
 - `First Message` from Lorebook on Chat Reset.
 - New Macro `{{kwarg}}` that controls "chat_template_kwargs" parameters.
@@ -77,7 +77,7 @@ Inspired by SillyTavern's macro engine, this engine allows macros / scripts exec
     - **`{{lore ENTRY_NAME}}`**: `You found a Book about Red Dragons: {{lore Red Dragon}}` -> `You found a Book about Red Dragons: Red dragons are ancient...` - Will search Lorebook for Entry Name (Red Dragon) and injects its Entry Prompt along with image, not-case sensitive. If added Lorebook Entry have MACRO keys inside it - those keys also be processed. This MACRO have high priority and will work even if Lorebook is disabled.
     - **`{{image ENTRY_NAME}}`**: `Red Dragon spreads its wings and takes to the air. {{image Red Dragon Flying}}` -> `Red Dragon spreads its wings and takes to the air.` - Image from Lorebook Entry (Red Dragon Flying) will appear in the chat bellow the last USER message.
     - **`{{anote TEXT}}`**: `{{anote - Think like Dragon.}}` - Temporary adds `- Think like Dragon.` to the end of the last USER Message with newline, works similar to classic Author's Note.
-    - **`{{llm MSGS_NUMBER TEXT}}`**: `{{llm 2 Summarize content in one sentence, use "SHORT:Text" format}}` -> `SHORT: Hero found a Book about Red Dragons...` - Calls LLM Sub-Request inside Main Request using `Context` (Recent `2` Chat Messages) and `Instruction` (`Summarize content in one sentence, use "SHORT:Text" format`). Allows Light-Agent like usage - `MSGS_NUMBER` controls how many Chat Messages (recent ones) to use as Context for Sub-Request, `TEXT` works as System Prompt and as Latest Message from USER. Great to slice complex instructions into a small pin-point tasks each with its own Context and Prompt to follow. Can be nested inside each other to form a chain that use previous Sub-Request result in next one. Using with `{{anote}}` macro allows to form instruction by LLM and push it as direct USER command for Main Request. Powerful but Time consuming.
+    - **`{{llm NUMBER TEXT}}`**: `{{llm 2 Summarize content in one sentence, use "SHORT:Text" format}}` -> `SHORT: Hero found a Book about Red Dragons...` - Calls LLM Sub-Request using `Context` (Recent `2` Chat Messages) and `Prompt` (`Summarize content in one sentence, use "SHORT:Text" format`). Allows Light-Agent like usage - `NUMBER` controls how many Chat Messages (recent ones) to use as `Context` for Sub-Request, `TEXT` works as `System Prompt` and as `Latest Message from USER`. Can be nested to form a chain that use previous Sub-Request result in next one. Split complex instructions into small pin-point tasks each with its own `Context` and `Prompt` to follow. Using with `{{anote}}` macro allows to push instruction from LLM as direct USER command for Main Request.
 4. **Random**:
     - **`{{roll NdN}}`**: `The Dragon hits you on {{roll 2d6}} HP` -> `The Dragon hits you on 8 HP` - Random Dice Roll function, can generate any kind of rolls that follows NdN loggic: 1d6, 2d10, 3d20. Can be used as simple random number generator: 1d1000 etc.
     - **`{{pick A|B|C}}`**: `You better choose {{pick right|left|middle}} section` -> `You better choose right section` - Random Choice out of 2+ Options.
