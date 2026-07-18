@@ -16,7 +16,7 @@ https://github.com/user-attachments/assets/e0d3f51d-e8ca-4f71-b9f4-cdcd587f82e5
 - Duplicate Chat Message function via `ALT` + `Copy` Button.
 - `First Message` from Lorebook on Chat Reset.
 - New Macro `{{kwarg}}` that controls "chat_template_kwargs" parameters.
-- Character Cards Support (Chub.AI etc) via `Vascura - Card Inspector` Tool.
+- Character Cards Support (Chub.AI etc) via `Vascura CARD Inspector` Tool.
 
 ### Features: 
 
