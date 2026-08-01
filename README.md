@@ -164,12 +164,12 @@ Each `USER Message` stores a VAR `Snapshot` state of variables, flags, texts tha
 - `https://api.groq.com/openai/v1` (Groq API).
 - `https://api.mistral.ai/v1` (Mistral API).
 
-### allOrigins
+### allOrigins:
 
 - Web Search works via allOrigins - https://github.com/gnuns/allOrigins/tree/main
 - By default it will use allorigins.win website as a proxy.
 - But by running it locally you will get way faster and more stable results (use LOC version).
 
-### License
+### License:
 
 Apache 2.0 License.
