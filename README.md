@@ -160,7 +160,6 @@ Each `USER Message` stores a VAR `Snapshot` state of variables, flags, texts tha
 ### Useful Links to OpenAI API Compatible Endpoints (free):
 - `https://generativelanguage.googleapis.com/v1beta/openai/v1` (Google API).
 - `https://openrouter.ai/api/v1` (OpenRouter API).
-- `https://api.cerebras.ai/v1` (Cerebras API).
 - `https://api.groq.com/openai/v1` (Groq API).
 - `https://api.mistral.ai/v1` (Mistral API).
 
