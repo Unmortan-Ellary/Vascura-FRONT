@@ -98,7 +98,7 @@ Each `USER Message` stores a VAR `Snapshot` state of variables, flags, texts tha
         - `>>` - Greater than.
         - `<<` - Less than.
         - `includes` - String contains check, `{{if "Is this dress red" includes "red" ?? Yes::No}}` -> `Yes`.
-7. **Samplers:**
+7. **Samplers \ Models:**
    - **`{{model MODEL_NAME}}`**: `{{model Skyfall-31b-Q3-16k}}` - Temporary overrides current `Model Name (Optional)` setting with different name (`Skyfall-31b-Q3-16k`), `MODEL_NAME` should match one of listed models from `Model Name (Optional)` setting. You can switch to different models for LLM Sub-Requests using `{{llm}}` macro, for example `Gemma 4 31b` to create an Answer Plan for Main-Request that will use `Skyfall 31b`. You can use `Qwen 3 4b` that will analyze chat history and then choose the right model for answer: `Gemma 4 31b` for Creative \ Chat or `Qwen 3.8 27B` for Coding \ Agentic answer. Works with any endpoint that supports model switching, works fast even with `llama.cpp` set to `--models-max 1` (only single model loaded at a time) due to RAM cache.
    - **`{{kwarg KWARG_NAME VALUE}}`**: `{{kwarg enable_thinking false}}` - Adds `"chat_template_kwargs": {"enable_thinking": false}` argument for next message, KWARGs usually used to disable `thinking` of the model or to switch any other parameter. Each single `{{kwarg}}` parameter should have its own macro line, if same `{{kwarg}}` parameter repeated multiple times in the same request, last one will be used.
         - Core KWARGs: `enable_thinking`, `thinking`, `preserve_thinking`, `reasoning_effort`.
