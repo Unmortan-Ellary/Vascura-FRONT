@@ -99,12 +99,13 @@ Each `USER Message` stores a VAR `Snapshot` state of variables, flags, texts tha
         - `<<` - Less than.
         - `includes` - String contains check, `{{if "Is this dress red" includes "red" ?? Yes::No}}` -> `Yes`.
 7. **Samplers:**
+   - **`{{model MODEL_NAME}}`**: `{{model Skyfall-31b-Q3-16k}}` - Temporary overrides current `Model Name (Optional)` setting with different name (`Skyfall-31b-Q3-16k`), `MODEL_NAME` should match one of listed models from `Model Name (Optional)` setting. You can switch to different models for LLM Sub-Requests using `{{llm}}` macro, for example `Gemma 4 31b` to create an Answer Plan for Main-Request that will use `Skyfall 31b`. You can use `Qwen 3 4b` that will analyze chat history and then choose the right model for answer: `Gemma 4 31b` for Creative \ Chat or `Qwen 3.8 27B` for Coding \ Agentic answer. Works with any endpoint that supports model switching, works fast even with `llama.cpp` set to `--models-max 1` (only single model loaded at a time) due to RAM cache.
    - **`{{kwarg KWARG_NAME VALUE}}`**: `{{kwarg enable_thinking false}}` - Adds `"chat_template_kwargs": {"enable_thinking": false}` argument for next message, KWARGs usually used to disable `thinking` of the model or to switch any other parameter. Each single `{{kwarg}}` parameter should have its own macro line, if same `{{kwarg}}` parameter repeated multiple times in the same request, last one will be used.
         - Core KWARGs: `enable_thinking`, `thinking`, `preserve_thinking`, `reasoning_effort`.
    - **`{{sampler SAMPLER_NAME VALUE}}`**: `{{sampler temperature 0.2}}` - Temporary overrides existing sampler with different value (`temperature` from 1.0 to 0.2) or adds totally new one supported by Endpoint, for example `presence_penalty` have no dedicated slider, but it can be used just by adding `{{sampler presence_penalty 1.5}}` to System Prompt or Lorebook. You can create sampling presets in Lorebook and then fast-switch between them by pinning the right Lorebook entry. You can randomize any sampler using `{{sampler temperature 0.{{roll 1d9}}}}`. VALUE can be a number, false\true or text. All LlamaCpp supported [samplers](https://github.com/ggml-org/llama.cpp/tree/master/tools/server#api-endpoints).
         - Core Samplers: `temperature`, `top_k`, `top_p`, `min_p`, `typical_p`, `repeat_penalty`, `presence_penalty`, `frequency_penalty`, `xtc_probability`, `xtc_threshold`, `dry_multiplier`, `dry_base`, `dry_allowed_length`, `dry_penalty_last_n`, `dynatemp_range`, `dynatemp_exponent`, `n_predict`, `seed`, `ignore_eos`, etc.
         
-8. **Nesting and Syntax Example:**
+9. **Nesting and Syntax Example:**
     ```
     {{ // Everything that is between empty {{}} will be deleted, use this to clean newlines, comments etc.
        - This code checks that player has 300 Gold to buy a Sword.
