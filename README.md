@@ -3,7 +3,7 @@ https://github.com/user-attachments/assets/e0d3f51d-e8ca-4f71-b9f4-cdcd587f82e5
 
 ### Frontend's Core Ideas:
 - **Simplicity:** Easy to understand interface, curated features with "less is more" ideology.
-- **Dependency-Free:** No downloads, no Python, no Node.js - just a single compact (450~ kb) HTML file that runs in your browser.
+- **Dependency-Free:** No downloads, no Python, no Node.js - just a single compact (500~ kb) HTML file that runs in your browser.
 - **On-the-Spot Text Editing:** Fast and precise control over editing and altering text.
 - **Context-Effective Web Search:** Should find info and links and fit in 4096 tokens limit.
 - **Lorebook:** Dynamically injects text, macro scripts, images.
@@ -12,9 +12,9 @@ https://github.com/user-attachments/assets/e0d3f51d-e8ca-4f71-b9f4-cdcd587f82e5
 - **Open Source:** under the Apache 2.0 License.
 
 ### What's new?
+- Now you can check `Thinking` for every `LLM Message` by clicking `Show Thinking` button.
 - New Macro `{{model}}` allows to switch current `LLM Model` with Scripts or Macros.
 - New Macro `{{llm}}` allows to chain small LLM Sub-Requests.
-- Duplicate Chat Message function via `ALT` + `Copy` Button.
 - New Macro `{{kwarg}}` that controls "chat_template_kwargs" parameters.
 - Character Cards Support (Chub.AI etc) via `Vascura CARD Inspector` Tool.
 
@@ -30,7 +30,7 @@ Generate as many LLM responses as you like at any point in the conversation. Edi
 Each agent gathers relevant data ([using allOrigins](https://github.com/gnuns/allOrigins/tree/main)) and adapts its search based on the latest messages. Agents will push findings as "internal knowledge", allowing the LLM to use or ignore the information, whichever leads to a better response. The algorithm is based on more complex system but is streamlined for speed and efficiency, fitting within an 4K context window (all 9 agents, instruction model).
 
 4. **Token-Prediction System:**
-Available when using LM Studio or Llama.Cpp / Kobold.Cpp as backend, this feature provides short suggestions for the LLM’s next response or for continuing your current text edit. Accept any suggestion instantly by pressing `Tab`.
+Available when using any Llama.Cpp Based / LM Studio / Kobold.Cpp Endpoint, this feature provides short suggestions for the LLM’s next response or for continuing your current text edit. Accept any suggestion instantly by pressing `Tab`.
 
 5. **Any OpenAI-API-Compatible Backend:**
 Works with any endpoint that implements the OpenAI API - LM Studio, Kobold.CPP, Llama.CPP Server, Oobabooga's Text Generation WebUI, and more. With "Strict API" mode enabled, it also supports Mistral API, OpenRouter API, and other v1-compliant endpoints.
@@ -46,8 +46,8 @@ By default, frontend is configured for an easy start with LM Studio: just turn `
      <img width="1341" height="335" alt="image" src="https://github.com/user-attachments/assets/033f48e0-879d-43f1-904e-479115672bc2" />
 
 
-9. **Thinking Models Support:**
-Supports thinking models that use `<think></think>` tags or if your endpoint returns only the final answer (without a thinking step), enable the "Thinking Model" switch to activate compatibility mode - this ensures Web Search and other features work correctly.
+9. **Legacy Thinking Mode Support:**
+Supports modern and legacy Thinking Modes: Modern for Endpoints that returns separate `Reasoning` and `Answer` fields or only `Final Answer`, Legacy if your Endpoint returns `Final Answer` with `<think></think>` tags, enable the "Legacy Thinking" switch to activate compatibility mode for old builds and forks - this ensures `Web Search` and other features work correctly.
 
 10. **Lorebook:**
 Use Lorebook System to create text entries (with macro scripts support) and dynamically inject them into the System Prompt as internal LLM memory. Injection is triggered by custom tags detected in the last messages. **Lorebook Image System:** Images also will be injected into chat, parameter "Messages to Scan" controls how often same image will be injected. **First Message:** If Lorebook have entry titled "First Message" it will be placed as first "LLM Message" in the Chat (by pressing `🧹` Clean / Reset Chat).
