@@ -12,11 +12,11 @@ https://github.com/user-attachments/assets/e0d3f51d-e8ca-4f71-b9f4-cdcd587f82e5
 - **Open Source:** under the Apache 2.0 License.
 
 ### What's new?
+- New `Subgroups` function to store Chats.
 - Now you can check `Thinking` for every `LLM Message` by clicking `Show Thinking` button.
 - New Macro `{{model}}` allows to switch current `LLM Model` with Scripts or Macros.
 - New Macro `{{llm}}` allows to chain small LLM Sub-Requests.
 - New Macro `{{kwarg}}` that controls "chat_template_kwargs" parameters.
-- Character Cards Support (Chub.AI etc) via `Vascura CARD Inspector` Tool.
 
 ### Features: 
 
